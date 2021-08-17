@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 26
@@ -39,6 +41,7 @@ dependencies {
     compile 'com.yongchun:com.yongchun.imageselector:1.1.0'
     compile 'org.tensorflow:tensorflow-android:1.12.0'
     compile 'com.karumi:dexter:4.1.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 configurations.all {
     resolutionStrategy.eachDependency { DependencyResolveDetails details ->
@@ -53,4 +56,7 @@ configurations.all {
             details.useVersion '11.8.0'
         }
     }
+}
+repositories {
+    mavenCentral()
 }
