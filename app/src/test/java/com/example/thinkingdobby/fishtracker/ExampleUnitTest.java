@@ -1,4 +1,4 @@
-package com.example.jpkim.simpletensorflowdemo;
+package com.example.thinkingdobby.fishtracker;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package com.example.jpkim.simpletensorflowdemo;
+package com.example.thinkingdobby.fishtracker;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

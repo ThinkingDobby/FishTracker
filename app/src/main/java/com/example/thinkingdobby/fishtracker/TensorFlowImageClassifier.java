@@ -14,7 +14,7 @@
  *    limitations under the License.
  */
 
-package com.example.jpkim.simpletensorflowdemo;
+package com.example.thinkingdobby.fishtracker;
 
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;

@@ -1,4 +1,4 @@
-package com.example.jpkim.simpletensorflowdemo
+package com.example.thinkingdobby.fishtracker
 
 import android.Manifest
 import android.app.Activity
@@ -14,7 +14,6 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
-import com.example.jpkim.simpletensorflowdemo.MainActivity
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken
