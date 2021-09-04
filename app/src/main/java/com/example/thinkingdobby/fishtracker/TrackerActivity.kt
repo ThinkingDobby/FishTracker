@@ -36,25 +36,20 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
     private var classifier: Classifier? = null
     private val executor: Executor = Executors.newSingleThreadExecutor()
     private var cameraView: CameraView? = null
-    private var tracker_result_text: TextView? = null
+    private var tracker_tv_result: TextView? = null
     private var imgResult: ImageView? = null
     private var btnDetect: Button? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tracker)
         cameraView = findViewById<View>(R.id.cameraView) as CameraView
-        tracker_result_text = findViewById<View>(R.id.tracker_result_text) as TextView
+        tracker_tv_result = findViewById<View>(R.id.tracker_tv_result) as TextView
         imgResult = findViewById<View>(R.id.imgResult) as ImageView
-        val btnGallery = findViewById<View>(R.id.btnGallery) as Button
-        val btnURL = findViewById<View>(R.id.btnUrl) as Button
-        val btnCamera = findViewById<View>(R.id.btnCamera) as Button
+        val tracker_btn_album = findViewById<View>(R.id.tracker_btn_album) as Button
         btnDetect = findViewById<View>(R.id.btnDetect) as Button
-        cameraView!!.visibility = View.INVISIBLE // hides cameraview on startup, shows when camera button clicked
-        btnDetect!!.visibility = View.INVISIBLE // hide camera detect button on startup
+        cameraView!!.start()
         // btn events delegation
-        btnGallery.setOnClickListener(this)
-        btnURL.setOnClickListener(this)
-        btnCamera.setOnClickListener(this)
+        tracker_btn_album.setOnClickListener(this)
         btnDetect!!.setOnClickListener(this)
         // initialize tensorflow async
         initTensorFlowAndLoadModel()
@@ -109,9 +104,7 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View) { // define which methods to call when buttons in view clicked
         val id = v.id
         when (id) {
-            R.id.btnGallery -> LoadImageFromGallery()
-            R.id.btnUrl -> LoadImageFromUrl()
-            R.id.btnCamera -> DetectImageFromCamera()
+            R.id.tracker_btn_album -> LoadImageFromGallery()
             R.id.btnDetect -> cameraView!!.captureImage()
             else -> {
             }
@@ -157,7 +150,7 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
                             val input = URL(editURL.text.toString()).openStream()
                             //InputStream input = new java.net.URL(editURL.getText().toString()).openConnection().getInputStream();
                             val bitmap = BitmapFactory.decodeStream(input)
-                            // recognize_bitmap needs to update the UI(imgResult, tracker_result_text), so invoke it in runOnUiThread
+                            // recognize_bitmap needs to update the UI(imgResult, tracker_tv_result), so invoke it in runOnUiThread
                             runOnUiThread {
                                 //
                                 recognize_bitmap(bitmap)
@@ -172,12 +165,6 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
                 .show()
     }
 
-    private fun DetectImageFromCamera() { // show cameraview and detect button when source from camera button clicked
-        cameraView!!.visibility = View.VISIBLE
-        btnDetect!!.visibility = View.VISIBLE
-        if (!cameraView!!.isActivated) cameraView!!.start()
-    }
-
     // recognize bitmap and get results
     private fun recognize_bitmap(bitmap: Bitmap) { // create a bitmap scaled to INPUT_SIZE
         var bitmap = bitmap
@@ -188,7 +175,7 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
         val results = classifier!!.recognizeImage(bitmap)
         val finalBitmap = bitmap
         runOnUiThread { imgResult!!.setImageBitmap(finalBitmap) }
-        tracker_result_text!!.text = results.toString()
+        tracker_tv_result!!.text = results.toString()
     }
 
     companion object {
