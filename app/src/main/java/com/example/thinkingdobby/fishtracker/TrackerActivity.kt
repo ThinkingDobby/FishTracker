@@ -36,14 +36,14 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
     private var classifier: Classifier? = null
     private val executor: Executor = Executors.newSingleThreadExecutor()
     private var cameraView: CameraView? = null
-    private var txtResult: TextView? = null
+    private var tracker_result_text: TextView? = null
     private var imgResult: ImageView? = null
     private var btnDetect: Button? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tracker)
         cameraView = findViewById<View>(R.id.cameraView) as CameraView
-        txtResult = findViewById<View>(R.id.txtResult) as TextView
+        tracker_result_text = findViewById<View>(R.id.tracker_result_text) as TextView
         imgResult = findViewById<View>(R.id.imgResult) as ImageView
         val btnGallery = findViewById<View>(R.id.btnGallery) as Button
         val btnURL = findViewById<View>(R.id.btnUrl) as Button
@@ -157,7 +157,7 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
                             val input = URL(editURL.text.toString()).openStream()
                             //InputStream input = new java.net.URL(editURL.getText().toString()).openConnection().getInputStream();
                             val bitmap = BitmapFactory.decodeStream(input)
-                            // recognize_bitmap needs to update the UI(imgResult, txtResult), so invoke it in runOnUiThread
+                            // recognize_bitmap needs to update the UI(imgResult, tracker_result_text), so invoke it in runOnUiThread
                             runOnUiThread {
                                 //
                                 recognize_bitmap(bitmap)
@@ -188,7 +188,7 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
         val results = classifier!!.recognizeImage(bitmap)
         val finalBitmap = bitmap
         runOnUiThread { imgResult!!.setImageBitmap(finalBitmap) }
-        txtResult!!.text = results.toString()
+        tracker_result_text!!.text = results.toString()
     }
 
     companion object {

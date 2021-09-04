@@ -7,4 +7,17 @@ android:layout_height="match_parent"
     android:id="@+id/main_background"
 tools:context=".MainActivity">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="민물고기 도감"
+        android:textSize="144px"
+        android:fontFamily="@font/noto_bold"
+        android:textColor="#1152d2"
+        app:layout_constraintVertical_bias="0.35"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
 </android.support.constraint.ConstraintLayout>
