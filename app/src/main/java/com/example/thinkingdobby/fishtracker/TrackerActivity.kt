@@ -6,12 +6,9 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
-import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
-import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import com.karumi.dexter.Dexter
@@ -23,8 +20,6 @@ import com.wonderkiln.camerakit.CameraKit
 import com.wonderkiln.camerakit.CameraListener
 import com.wonderkiln.camerakit.CameraView
 import com.yongchun.library.view.ImageSelectorActivity
-import java.io.IOException
-import java.net.URL
 import java.util.*
 import java.util.concurrent.Executor
 import java.util.concurrent.Executors
@@ -37,20 +32,20 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
     private val executor: Executor = Executors.newSingleThreadExecutor()
     private var cameraView: CameraView? = null
     private var tracker_tv_result: TextView? = null
-    private var imgResult: ImageView? = null
-    private var btnDetect: Button? = null
+    private var tracker_iv_selected: ImageView? = null
+    private var tracker_btn_shot: Button? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tracker)
         cameraView = findViewById<View>(R.id.cameraView) as CameraView
         tracker_tv_result = findViewById<View>(R.id.tracker_tv_result) as TextView
-        imgResult = findViewById<View>(R.id.imgResult) as ImageView
+        tracker_iv_selected = findViewById<View>(R.id.tracker_iv_selected) as ImageView
         val tracker_btn_album = findViewById<View>(R.id.tracker_btn_album) as Button
-        btnDetect = findViewById<View>(R.id.btnDetect) as Button
+        tracker_btn_shot = findViewById<View>(R.id.tracker_btn_shot) as Button
         cameraView!!.start()
         // btn events delegation
         tracker_btn_album.setOnClickListener(this)
-        btnDetect!!.setOnClickListener(this)
+        tracker_btn_shot!!.setOnClickListener(this)
         // initialize tensorflow async
         initTensorFlowAndLoadModel()
         // permission check & request if needed
@@ -105,7 +100,7 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
         val id = v.id
         when (id) {
             R.id.tracker_btn_album -> LoadImageFromGallery()
-            R.id.btnDetect -> cameraView!!.captureImage()
+            R.id.tracker_btn_shot -> cameraView!!.captureImage()
             else -> {
             }
         }
@@ -114,7 +109,7 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
     // recognize image from camera roll.
     private fun LoadImageFromGallery() { // make sure cameraview/dectect button invisible and stopped
         cameraView!!.visibility = View.INVISIBLE
-        btnDetect!!.visibility = View.INVISIBLE
+        tracker_btn_shot!!.visibility = View.INVISIBLE
         cameraView!!.stop()
         // invoke image picker to get a single image to be inferenced
         ImageSelectorActivity.start(this@TrackerActivity, 1, ImageSelectorActivity.MODE_SINGLE, false, false, false)
@@ -131,39 +126,6 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     // retrieves image from entered url string and call tensorflow
-    private fun LoadImageFromUrl() { // make sure cameraview/dectect button invisible and stopped
-        cameraView!!.visibility = View.INVISIBLE
-        btnDetect!!.visibility = View.INVISIBLE
-        cameraView!!.stop()
-        // inflate alertdialog for url input and show it to the user
-        val layoutinflater = LayoutInflater.from(this)
-        val dialogView = layoutinflater.inflate(R.layout.dialog_prompt_url, null)
-        val editURL = dialogView.findViewById<View>(R.id.editURL) as EditText
-        val alertDialogBuilder = AlertDialog.Builder(this)
-        alertDialogBuilder.setView(dialogView)
-                .setTitle("Enter/Paste url of image to recognize")
-                .setPositiveButton("Ok") { dialog, id ->
-                    // read from url stream not allowed in main thread. so invoke it in different thread
-                    executor.execute {
-                        try {
-                            val url = editURL.text.toString()
-                            val input = URL(editURL.text.toString()).openStream()
-                            //InputStream input = new java.net.URL(editURL.getText().toString()).openConnection().getInputStream();
-                            val bitmap = BitmapFactory.decodeStream(input)
-                            // recognize_bitmap needs to update the UI(imgResult, tracker_tv_result), so invoke it in runOnUiThread
-                            runOnUiThread {
-                                //
-                                recognize_bitmap(bitmap)
-                            }
-                        } catch (e: IOException) {
-                            e.printStackTrace()
-                        }
-                    }
-                }
-                .setNegativeButton("CANCEL") { dialog, id -> }
-                .create()
-                .show()
-    }
 
     // recognize bitmap and get results
     private fun recognize_bitmap(bitmap: Bitmap) { // create a bitmap scaled to INPUT_SIZE
@@ -174,7 +136,7 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
 // but I'm going to show raw result here.
         val results = classifier!!.recognizeImage(bitmap)
         val finalBitmap = bitmap
-        runOnUiThread { imgResult!!.setImageBitmap(finalBitmap) }
+        runOnUiThread { tracker_iv_selected!!.setImageBitmap(finalBitmap) }
         tracker_tv_result!!.text = results.toString()
     }
 
