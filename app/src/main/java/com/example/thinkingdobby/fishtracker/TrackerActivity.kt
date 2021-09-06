@@ -2,10 +2,12 @@ package com.example.thinkingdobby.fishtracker
 
 import android.Manifest
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Color
+import android.media.AudioManager
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
@@ -21,13 +23,11 @@ import com.wonderkiln.camerakit.CameraKit
 import com.wonderkiln.camerakit.CameraListener
 import com.wonderkiln.camerakit.CameraView
 import com.yongchun.library.view.ImageSelectorActivity
+import kotlinx.android.synthetic.main.activity_tracker.*
 import java.util.*
 import java.util.concurrent.Executor
 import java.util.concurrent.Executors
 
-//import com.flurgle.camerakit.CameraKit;
-//import com.flurgle.camerakit.CameraListener;
-//import com.flurgle.camerakit.CameraView;
 class TrackerActivity : AppCompatActivity(), View.OnClickListener {
     private var classifier: Classifier? = null
     private val executor: Executor = Executors.newSingleThreadExecutor()
@@ -35,6 +35,7 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
     private var tracker_tv_result: TextView? = null
     private var tracker_iv_selected: ImageView? = null
     private var tracker_btn_shot: Button? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tracker)
@@ -43,7 +44,14 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
         tracker_iv_selected = findViewById<View>(R.id.tracker_iv_selected) as ImageView
         val tracker_btn_album = findViewById<View>(R.id.tracker_btn_album) as Button
         tracker_btn_shot = findViewById<View>(R.id.tracker_btn_shot) as Button
+
+        val am = applicationContext.getSystemService(Context.AUDIO_SERVICE) as AudioManager
+        am.setStreamMute(AudioManager.STREAM_SYSTEM, true)
         cameraView!!.start()
+
+        tracker_iv_selectedShadow.visibility = View.INVISIBLE
+
+        // scale, seekBar 이용해 크기 조절 구현 시도할 것
 
         window.apply {
             decorView.systemUiVisibility =
@@ -55,6 +63,7 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
         // btn events delegation
         tracker_btn_album.setOnClickListener(this)
         tracker_btn_shot!!.setOnClickListener(this)
+
         // initialize tensorflow async
         initTensorFlowAndLoadModel()
         // permission check & request if needed
@@ -142,7 +151,8 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
 // but I'm going to show raw result here.
         val results = classifier!!.recognizeImage(bitmap)
         val finalBitmap = bitmap
-        runOnUiThread { tracker_iv_selected!!.setImageBitmap(finalBitmap) }
+        runOnUiThread { tracker_iv_selected!!.setImageBitmap(finalBitmap)
+            tracker_iv_selectedShadow.visibility = View.VISIBLE}
         tracker_tv_result!!.text = results.toString()
     }
 

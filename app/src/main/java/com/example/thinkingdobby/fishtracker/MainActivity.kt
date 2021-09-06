@@ -22,7 +22,6 @@ class MainActivity : AppCompatActivity() {
 
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
 
-
         main_background.setOnClickListener {
             val intent = Intent(this@MainActivity, TrackerActivity::class.java)
             startActivity(intent)
