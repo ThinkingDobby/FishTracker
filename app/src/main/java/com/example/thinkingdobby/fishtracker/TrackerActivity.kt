@@ -116,10 +116,7 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     // recognize image from camera roll.
-    private fun LoadImageFromGallery() { // make sure cameraview/dectect button invisible and stopped
-        cameraView!!.visibility = View.INVISIBLE
-        tracker_btn_shot!!.visibility = View.INVISIBLE
-        cameraView!!.stop()
+    private fun LoadImageFromGallery() {
         // invoke image picker to get a single image to be inferenced
         ImageSelectorActivity.start(this@TrackerActivity, 1, ImageSelectorActivity.MODE_SINGLE, false, false, false)
     }
@@ -139,7 +136,7 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
     // recognize bitmap and get results
     private fun recognize_bitmap(bitmap: Bitmap) { // create a bitmap scaled to INPUT_SIZE
         var bitmap = bitmap
-        bitmap = Bitmap.createScaledBitmap(bitmap, 84, 112, false)
+        bitmap = Bitmap.createScaledBitmap(bitmap, INPUT_SIZE, INPUT_SIZE, false)
         // returned value stores in Classifier.Recognition format
 // which provides various methods to parse the result,
 // but I'm going to show raw result here.
