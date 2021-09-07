@@ -33,6 +33,7 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
     private val executor: Executor = Executors.newSingleThreadExecutor()
     private var cameraView: CameraView? = null
     private var tracker_tv_result: TextView? = null
+    private var tracker_tv_resultSub: TextView? = null
     private var tracker_iv_selected: ImageView? = null
     private var tracker_btn_shot: Button? = null
     private var tracker_btn_album: Button? = null
@@ -43,6 +44,7 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_tracker)
         cameraView = findViewById<View>(R.id.cameraView) as CameraView
         tracker_tv_result = findViewById<View>(R.id.tracker_tv_result) as TextView
+        tracker_tv_resultSub = findViewById<View>(R.id.tracker_tv_resultSub) as TextView
         tracker_iv_selected = findViewById<View>(R.id.tracker_iv_selected) as ImageView
         tracker_btn_album = findViewById<View>(R.id.tracker_btn_album) as Button
         tracker_tv_album = findViewById<View>(R.id.tracker_tv_album) as TextView
@@ -120,7 +122,9 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
         val id = v.id
         when (id) {
             R.id.tracker_btn_album, R.id.tracker_tv_album -> LoadImageFromGallery()
-            R.id.tracker_btn_shot -> cameraView!!.captureImage()
+            R.id.tracker_btn_shot -> {
+                cameraView!!.captureImage()
+            }
             else -> {
             }
         }
@@ -156,19 +160,23 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
         runOnUiThread {
             tracker_iv_selected!!.setImageBitmap(finalBitmap)
             visibilityControl()
-
+            tracker_tv_result!!.text = nameEngToKor(namePicker(results[0].toString()))
+            if (results.size > 1) tracker_tv_resultSub!!.text =
+                   "또는 ${nameEngToKor(namePicker(results[1].toString()))} 입니다."
+            else tracker_tv_resultSub!!.text = ""
         }
-        tracker_tv_result!!.text = nameEngToKor(namePicker(results[0].toString()))
     }
 
     private fun initVisibility() {
         tracker_iv_selectedShadow.visibility = View.INVISIBLE
         tracker_tv_guide.visibility = View.VISIBLE
+        tracker_tv_resultEnd.visibility = View.INVISIBLE
     }
 
     private fun visibilityControl() {
         tracker_iv_selectedShadow.visibility = View.VISIBLE
         tracker_tv_guide.visibility = View.INVISIBLE
+        tracker_tv_resultEnd.visibility = View.VISIBLE
     }
 
     private fun namePicker(input: String): String {
@@ -198,7 +206,7 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
             "striped" -> "돌고기"
             "channaargus" -> "가물치"
             "skygager" -> "강준치"
-            else -> input
+            else -> "Err"
         }
     }
 

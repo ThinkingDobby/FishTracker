@@ -101,14 +101,43 @@
 
     <TextView
         android:id="@+id/tracker_tv_result"
-        android:layout_width="187dp"
-        android:layout_height="100dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:textColor="@color/colorPrimary"
         android:textSize="26sp"
-        android:layout_marginBottom="23dp"
+        android:fontFamily="@font/noto_bold"
         android:layout_marginStart="18dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="18dp"
+        app:layout_constraintBottom_toBottomOf="@id/tracker_tv_resultSub"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tracker_tv_resultEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorDark"
+        android:textSize="24sp"
+        android:paddingTop="1dp"
+        android:text="입니다."
+        android:layout_marginStart="3dp"
+        android:fontFamily="@font/noto_regular"
+        app:layout_constraintBottom_toBottomOf="@id/tracker_tv_result"
+        app:layout_constraintTop_toTopOf="@id/tracker_tv_result"
+        app:layout_constraintStart_toEndOf="@id/tracker_tv_result" />
+
+    <TextView
+        android:id="@+id/tracker_tv_resultSub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorGray"
+        android:fontFamily="@font/noto_regular"
+        android:textSize="12sp"
+        android:layout_marginStart="18dp"
+        android:layout_marginBottom="23dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+
 
     <ImageView
         android:id="@+id/tracker_btn_shotBackground"
