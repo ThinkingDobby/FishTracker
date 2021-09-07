@@ -46,6 +46,19 @@
         android:stateListAnimator="@null"
         app:layout_constraintTop_toTopOf="@id/tracker_iv_trackerBottom"
         app:layout_constraintStart_toStartOf="parent" />
+    
+    <TextView
+        android:id="@+id/tracker_tv_album"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="앨범에서 선택"
+        android:textColor="@color/colorGray"
+        android:fontFamily="@font/noto_regular"
+        android:layout_marginStart="6dp"
+        android:textSize="12sp"
+        app:layout_constraintTop_toTopOf="@id/tracker_btn_album"
+        app:layout_constraintBottom_toBottomOf="@id/tracker_btn_album"
+        app:layout_constraintStart_toEndOf="@id/tracker_btn_album"/>
 
     <ImageView
         android:id="@+id/tracker_iv_selectedShadow"
@@ -72,11 +85,26 @@
         app:srcCompat="@android:color/transparent" />
 
     <TextView
+        android:id="@+id/tracker_tv_guide"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="버튼을 눌러 사진을 촬영하거나 앨범에서 선택해주세요."
+        android:fontFamily="@font/noto_medium"
+        android:textSize="22sp"
+        android:textColor="@color/colorDark"
+        android:layout_marginEnd="18dp"
+        app:layout_constraintStart_toStartOf="@id/tracker_btn_album"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tracker_btn_shot"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+    <TextView
         android:id="@+id/tracker_tv_result"
         android:layout_width="187dp"
         android:layout_height="100dp"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="18sp"
+        android:textColor="@color/colorPrimary"
+        android:textSize="26sp"
         android:layout_marginBottom="23dp"
         android:layout_marginStart="18dp"
         app:layout_constraintBottom_toBottomOf="parent"

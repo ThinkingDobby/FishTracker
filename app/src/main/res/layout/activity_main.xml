@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="민물고기 도감"
-        android:textSize="144px"
+        android:textSize="48sp"
         android:fontFamily="@font/noto_bold"
         android:textColor="#1152d2"
         app:layout_constraintVertical_bias="0.35"

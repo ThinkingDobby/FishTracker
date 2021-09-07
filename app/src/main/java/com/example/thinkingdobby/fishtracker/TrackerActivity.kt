@@ -35,6 +35,8 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
     private var tracker_tv_result: TextView? = null
     private var tracker_iv_selected: ImageView? = null
     private var tracker_btn_shot: Button? = null
+    private var tracker_btn_album: Button? = null
+    private var tracker_tv_album: TextView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,14 +44,13 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
         cameraView = findViewById<View>(R.id.cameraView) as CameraView
         tracker_tv_result = findViewById<View>(R.id.tracker_tv_result) as TextView
         tracker_iv_selected = findViewById<View>(R.id.tracker_iv_selected) as ImageView
-        val tracker_btn_album = findViewById<View>(R.id.tracker_btn_album) as Button
+        tracker_btn_album = findViewById<View>(R.id.tracker_btn_album) as Button
+        tracker_tv_album = findViewById<View>(R.id.tracker_tv_album) as TextView
         tracker_btn_shot = findViewById<View>(R.id.tracker_btn_shot) as Button
 
-        val am = applicationContext.getSystemService(Context.AUDIO_SERVICE) as AudioManager
-        am.setStreamMute(AudioManager.STREAM_SYSTEM, true)
         cameraView!!.start()
 
-        tracker_iv_selectedShadow.visibility = View.INVISIBLE
+        initVisibility()
 
         // scale, seekBar 이용해 크기 조절 구현 시도할 것
 
@@ -61,7 +62,8 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
         }
 
         // btn events delegation
-        tracker_btn_album.setOnClickListener(this)
+        tracker_btn_album!!.setOnClickListener(this)
+        tracker_tv_album!!.setOnClickListener(this)
         tracker_btn_shot!!.setOnClickListener(this)
 
         // initialize tensorflow async
@@ -117,7 +119,7 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View) { // define which methods to call when buttons in view clicked
         val id = v.id
         when (id) {
-            R.id.tracker_btn_album -> LoadImageFromGallery()
+            R.id.tracker_btn_album, R.id.tracker_tv_album -> LoadImageFromGallery()
             R.id.tracker_btn_shot -> cameraView!!.captureImage()
             else -> {
             }
@@ -151,9 +153,53 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
 // but I'm going to show raw result here.
         val results = classifier!!.recognizeImage(bitmap)
         val finalBitmap = bitmap
-        runOnUiThread { tracker_iv_selected!!.setImageBitmap(finalBitmap)
-            tracker_iv_selectedShadow.visibility = View.VISIBLE}
-        tracker_tv_result!!.text = results.toString()
+        runOnUiThread {
+            tracker_iv_selected!!.setImageBitmap(finalBitmap)
+            visibilityControl()
+
+        }
+        tracker_tv_result!!.text = nameEngToKor(namePicker(results[0].toString()))
+    }
+
+    private fun initVisibility() {
+        tracker_iv_selectedShadow.visibility = View.INVISIBLE
+        tracker_tv_guide.visibility = View.VISIBLE
+    }
+
+    private fun visibilityControl() {
+        tracker_iv_selectedShadow.visibility = View.VISIBLE
+        tracker_tv_guide.visibility = View.INVISIBLE
+    }
+
+    private fun namePicker(input: String): String {
+        return input.slice(input.lastIndexOf(']') + 1 until input.indexOf('(')).trim()
+    }
+
+    private fun nameEngToKor(input: String): String {
+        return when (input) {
+            "chub" -> "끄리"
+            "sweet" -> "은어"
+            "masou" -> "산천어"
+            "catfish" -> "메기"
+            "carassius" -> "붕어"
+            "mandarinfish" -> "잉어"
+            "blue" -> "블루길"
+            "chineseminnow" -> "버들치"
+            "darkchub" -> "갈겨니"
+            "carp" -> "잉어"
+            "eel" -> "장어"
+            "leather" -> "향어"
+            "skin" -> "누치"
+            "minnow" -> "피라미"
+            "goby" -> "모래무지"
+            "rainbow" -> "무지개송어"
+            "bass" -> "배스"
+            "coreoperca" -> "꺽지"
+            "striped" -> "돌고기"
+            "channaargus" -> "가물치"
+            "skygager" -> "강준치"
+            else -> input
+        }
     }
 
     companion object {
