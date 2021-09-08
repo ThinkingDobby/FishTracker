@@ -7,6 +7,7 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Color
+import android.graphics.Paint
 import android.media.AudioManager
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -53,6 +54,7 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
         cameraView!!.start()
 
         initVisibility()
+        tracker_tv_resultSubEnd.paintFlags = Paint.UNDERLINE_TEXT_FLAG
 
         // scale, seekBar 이용해 크기 조절 구현 시도할 것
 
@@ -159,11 +161,18 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
         val finalBitmap = bitmap
         runOnUiThread {
             tracker_iv_selected!!.setImageBitmap(finalBitmap)
-            visibilityControl()
+            setVisibility()
+            tracker_tv_resultProbability.text = "${probPicker(results[0].toString())}% 확률로"
             tracker_tv_result!!.text = nameEngToKor(namePicker(results[0].toString()))
-            if (results.size > 1) tracker_tv_resultSub!!.text =
-                   "또는 ${nameEngToKor(namePicker(results[1].toString()))} 입니다."
-            else tracker_tv_resultSub!!.text = ""
+            if (results.size > 1) {
+                tracker_tv_resultSub!!.text =
+                        "또는 ${probPicker(results[1].toString())}% 확률로 ${nameEngToKor(namePicker(results[1].toString()))} 입니다."
+                if (results.size > 2) tracker_tv_resultSubEnd.visibility = View.VISIBLE
+                else tracker_tv_resultSubEnd.visibility = View.INVISIBLE
+            } else {
+                tracker_tv_resultSub!!.text = ""
+                tracker_tv_resultSubEnd.visibility = View.INVISIBLE
+            }
         }
     }
 
@@ -171,12 +180,17 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
         tracker_iv_selectedShadow.visibility = View.INVISIBLE
         tracker_tv_guide.visibility = View.VISIBLE
         tracker_tv_resultEnd.visibility = View.INVISIBLE
+        tracker_tv_resultSubEnd.visibility = View.INVISIBLE
     }
 
-    private fun visibilityControl() {
+    private fun setVisibility() {
         tracker_iv_selectedShadow.visibility = View.VISIBLE
         tracker_tv_guide.visibility = View.INVISIBLE
         tracker_tv_resultEnd.visibility = View.VISIBLE
+    }
+
+    private fun probPicker(input: String): String {
+        return input.slice(input.indexOf('(') + 1 until input.indexOf('.'))
     }
 
     private fun namePicker(input: String): String {
