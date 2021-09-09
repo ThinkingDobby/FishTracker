@@ -8,6 +8,7 @@ import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.graphics.Paint
 import android.os.Bundle
+import android.provider.MediaStore
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.karumi.dexter.Dexter
@@ -18,9 +19,7 @@ import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import com.wonderkiln.camerakit.CameraKit
 import com.wonderkiln.camerakit.CameraListener
 import com.wonderkiln.camerakit.CameraView
-import com.yongchun.library.view.ImageSelectorActivity
 import kotlinx.android.synthetic.main.activity_tracker.*
-import java.util.*
 import java.util.concurrent.Executor
 import java.util.concurrent.Executors
 
@@ -28,6 +27,7 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
     private var classifier: Classifier? = null
     private val executor: Executor = Executors.newSingleThreadExecutor()
     private var cameraView: CameraView? = null
+    private val PICK_IMAGE = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -121,16 +121,21 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun loadImageFromGallery() {
-        ImageSelectorActivity.start(this@TrackerActivity, 1, ImageSelectorActivity.MODE_SINGLE, false, false, false)
+        val intent = Intent()
+        intent.type = "image/*"
+        intent.action = Intent.ACTION_GET_CONTENT
+
+        startActivityForResult(Intent.createChooser(intent, "Load Picture"), PICK_IMAGE)
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) { // pass the selected image from image picker to tensorflow
-        // image picker returns image(s) in arrayList
-        if (resultCode == Activity.RESULT_OK && requestCode == ImageSelectorActivity.REQUEST_IMAGE) {
-            val images = data.getSerializableExtra(ImageSelectorActivity.REQUEST_OUTPUT) as ArrayList<String>
-            // image decoded to bitmap, which can be recognized by tensorflow
-            val bitmap = BitmapFactory.decodeFile(images[0])
-            recognize_bitmap(bitmap)
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == PICK_IMAGE) {
+            if (resultCode == Activity.RESULT_OK) {
+                val uriPhoto = data?.data
+                val bitmap = MediaStore.Images.Media.getBitmap(applicationContext.contentResolver, uriPhoto)
+                recognize_bitmap(bitmap)
+            }
         }
     }
 

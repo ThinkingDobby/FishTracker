@@ -27,9 +27,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.yongchun.library.view.ImageSelectorActivity" />
-        <activity android:name="com.yongchun.library.view.ImagePreviewActivity" />
-        <activity android:name="com.yongchun.library.view.ImageCropActivity" />
     </application>
 
 </manifest>
