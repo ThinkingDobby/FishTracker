@@ -206,8 +206,17 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
     // recognize bitmap and get results
     private fun recognize_bitmap(bitmap: Bitmap) { // create a bitmap scaled to INPUT_SIZE
         var bitmap = bitmap
-        bitmap = Bitmap.createScaledBitmap(bitmap, INPUT_SIZE * 2, INPUT_SIZE * 2, false)
-        val bitmapForRecognize = Bitmap.createBitmap(bitmap, INPUT_SIZE / 2, INPUT_SIZE / 2, INPUT_SIZE, INPUT_SIZE)
+        var bitmapForRecognize = bitmap
+        if (bitmap.width < INPUT_SIZE || bitmap.height < INPUT_SIZE) {
+            bitmap = Bitmap.createScaledBitmap(bitmap, INPUT_SIZE * 2, INPUT_SIZE * 2, false)
+        }
+        bitmapForRecognize = Bitmap.createBitmap(bitmap, (bitmap.width - INPUT_SIZE) / 2,
+                (bitmap.height - INPUT_SIZE) / 2,
+                INPUT_SIZE,
+                INPUT_SIZE
+        )
+        bitmap = Bitmap.createScaledBitmap(bitmap, INPUT_SIZE * 3, INPUT_SIZE * 4, false)
+
         val results = classifier!!.recognizeImage(bitmapForRecognize)
         val finalBitmap = bitmap
         runOnUiThread {
