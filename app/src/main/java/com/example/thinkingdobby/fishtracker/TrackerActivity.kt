@@ -3,10 +3,9 @@ package com.example.thinkingdobby.fishtracker
 import android.Manifest
 import android.app.Activity
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.Color
-import android.graphics.Paint
+import android.graphics.*
+import android.media.ExifInterface
+import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.support.v7.app.AppCompatActivity
@@ -20,8 +19,13 @@ import com.wonderkiln.camerakit.CameraKit
 import com.wonderkiln.camerakit.CameraListener
 import com.wonderkiln.camerakit.CameraView
 import kotlinx.android.synthetic.main.activity_tracker.*
+import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
+import java.io.OutputStream
 import java.util.concurrent.Executor
 import java.util.concurrent.Executors
+
 
 class TrackerActivity : AppCompatActivity(), View.OnClickListener {
     private var classifier: Classifier? = null
@@ -128,13 +132,60 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
         startActivityForResult(Intent.createChooser(intent, "Load Picture"), PICK_IMAGE)
     }
 
+    // 이미지 회전
+    private fun rotateImage(source: Bitmap, angle: Float): Bitmap {
+        val matrix = Matrix()
+        matrix.postRotate(angle)
+        return Bitmap.createBitmap(source, 0, 0, source.width, source.height,
+                matrix, true)
+    }
+
+    // 이미지 절대 경로 확인
+    private fun createCopyAndReturnRealPath(uri: Uri) :String? {
+        val context = applicationContext
+        val contentResolver = context.contentResolver ?: return null
+
+        // Create file path inside app's data dir
+        val filePath = (context.applicationInfo.dataDir + File.separator
+                + System.currentTimeMillis())
+        val file = File(filePath)
+        try {
+            val inputStream = contentResolver.openInputStream(uri) ?: return null
+            val outputStream: OutputStream = FileOutputStream(file)
+            val buf = ByteArray(1024)
+            var len: Int
+            while (inputStream.read(buf).also { len = it } > 0) outputStream.write(buf, 0, len)
+            outputStream.close()
+            inputStream.close()
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+        return file.absolutePath
+    }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == PICK_IMAGE) {
             if (resultCode == Activity.RESULT_OK) {
-                val uriPhoto = data?.data
+                val uriPhoto = data!!.data
                 val bitmap = MediaStore.Images.Media.getBitmap(applicationContext.contentResolver, uriPhoto)
-                recognize_bitmap(bitmap)
+
+                // 이미지 회전되는 문제 해결
+                if (bitmap != null) {
+                    // 이미지 절대 경로 이용해 exif 데이터 추출
+                    val ei = ExifInterface(createCopyAndReturnRealPath(uriPhoto!!))
+                    val orientation = ei.getAttributeInt(ExifInterface.TAG_ORIENTATION,
+                    ExifInterface.ORIENTATION_UNDEFINED)
+
+                    val rotatedBitmap = when (orientation) {
+                        ExifInterface.ORIENTATION_ROTATE_90 -> rotateImage(bitmap, 90f)
+                        ExifInterface.ORIENTATION_ROTATE_180 -> rotateImage(bitmap, 180f)
+                        ExifInterface.ORIENTATION_ROTATE_270 -> rotateImage(bitmap, 270f)
+                        ExifInterface.ORIENTATION_NORMAL -> bitmap
+                        else -> bitmap
+                    }
+                    recognize_bitmap(rotatedBitmap)
+                }
             }
         }
     }
