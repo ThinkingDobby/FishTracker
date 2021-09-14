@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.thinkingdobby.fishtracker.TrackerActivity">
+
+    <view
+        android:id="@+id/cameraView"
+        class="com.wonderkiln.camerakit.CameraView"
+        id="@+id/view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/tracker_btn_shot"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/tracker_iv_aim"
+        android:layout_width="299dp"
+        android:layout_height="299dp"
+        app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintTop_toTopOf="@id/cameraView"
+        app:layout_constraintStart_toStartOf="@id/cameraView"
+        app:layout_constraintEnd_toEndOf="@id/cameraView"
+        app:layout_constraintBottom_toBottomOf="@id/cameraView"
+        android:src="@drawable/tracker_aim"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="프레임 안에 물고기를 배치해 주세요."
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="1"
+        android:shadowColor="#B3000000"
+        android:includeFontPadding="false"
+        android:fontFamily="@font/noto_regular"
+        android:textColor="@color/colorWhite"
+        android:textSize="14sp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toTopOf="@id/tracker_iv_aim"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ImageView
+        android:id="@+id/tracker_iv_menu"
+        android:layout_width="26dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/tracker_menu"/>
+
+
+    <ImageView
+        android:id="@+id/tracker_iv_trackerBottom"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/tracker_bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:adjustViewBounds="true"/>
+
+    <Button
+        android:id="@+id/tracker_btn_album"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginStart="18dp"
+        android:background="@drawable/tracker_album"
+        android:stateListAnimator="@null"
+        app:layout_constraintTop_toTopOf="@id/tracker_iv_trackerBottom"
+        app:layout_constraintStart_toStartOf="parent" />
+    
+    <TextView
+        android:id="@+id/tracker_tv_album"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="앨범에서 선택"
+        android:textColor="@color/colorGray"
+        android:fontFamily="@font/noto_regular"
+        android:layout_marginStart="6dp"
+        android:textSize="12sp"
+        app:layout_constraintTop_toTopOf="@id/tracker_btn_album"
+        app:layout_constraintBottom_toBottomOf="@id/tracker_btn_album"
+        app:layout_constraintStart_toEndOf="@id/tracker_btn_album"/>
+
+    <ImageView
+        android:id="@+id/tracker_iv_selectedShadow"
+        android:layout_width="112dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginStart="11dp"
+        app:layout_constraintTop_toTopOf="@id/tracker_iv_selected"
+        app:layout_constraintBottom_toBottomOf="@id/tracker_iv_selected"
+        app:layout_constraintStart_toStartOf="@id/tracker_iv_selected"
+        app:layout_constraintEnd_toEndOf="@id/tracker_iv_selected"
+        android:background="@drawable/tracker_selected_shadow"/>
+
+    <ImageView
+        android:id="@+id/tracker_iv_selected"
+        android:layout_width="84dp"
+        android:layout_height="112dp"
+        android:layout_marginEnd="18dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tracker_iv_trackerBottom"
+        app:layout_constraintVertical_bias="0.62"
+        app:srcCompat="@android:color/transparent" />
+
+    <TextView
+        android:id="@+id/tracker_tv_guide"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="버튼을 눌러 사진을 촬영하거나 앨범에서 선택해주세요."
+        android:includeFontPadding="false"
+        android:fontFamily="@font/noto_medium"
+        android:textSize="22sp"
+        android:textColor="@color/colorDark"
+        android:layout_marginEnd="18dp"
+        app:layout_constraintStart_toStartOf="@id/tracker_btn_album"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tracker_btn_shot"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+        android:id="@+id/tracker_tv_resultProbability"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:includeFontPadding="false"
+        android:fontFamily="@font/noto_regular"
+        android:textColor="@color/colorDark"
+        android:textSize="16sp"
+        android:layout_marginBottom="3dp"
+        app:layout_constraintStart_toStartOf="@id/tracker_tv_result"
+        app:layout_constraintBottom_toTopOf="@id/tracker_tv_result"/>
+
+    <TextView
+        android:id="@+id/tracker_tv_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:includeFontPadding="false"
+        android:textColor="@color/colorPrimary"
+        android:textSize="26sp"
+        android:fontFamily="@font/noto_bold"
+        android:layout_marginStart="18dp"
+        android:layout_marginBottom="18dp"
+        app:layout_constraintBottom_toTopOf="@id/tracker_tv_resultSub"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tracker_tv_resultEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:includeFontPadding="false"
+        android:textColor="@color/colorDark"
+        android:textSize="24sp"
+        android:paddingTop="1dp"
+        android:text="입니다."
+        android:layout_marginStart="3dp"
+        android:fontFamily="@font/noto_regular"
+        app:layout_constraintBottom_toBottomOf="@id/tracker_tv_result"
+        app:layout_constraintTop_toTopOf="@id/tracker_tv_result"
+        app:layout_constraintStart_toEndOf="@id/tracker_tv_result" />
+
+    <TextView
+        android:id="@+id/tracker_tv_resultSub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorGray"
+        android:includeFontPadding="false"
+        android:fontFamily="@font/noto_regular"
+        android:textSize="12sp"
+        android:layout_marginStart="18dp"
+        android:layout_marginBottom="23dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+        android:id="@+id/tracker_tv_resultSubEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:includeFontPadding="false"
+        android:textColor="#999999"
+        android:textSize="11sp"
+        android:text="더보기"
+        android:layout_marginStart="5dp"
+        android:fontFamily="@font/noto_regular"
+        app:layout_constraintBottom_toBottomOf="@id/tracker_tv_resultSub"
+        app:layout_constraintTop_toTopOf="@id/tracker_tv_resultSub"
+        app:layout_constraintStart_toEndOf="@id/tracker_tv_resultSub" />
+
+
+
+    <ImageView
+        android:id="@+id/tracker_btn_shotBackground"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:src="@drawable/tracker_circle"
+        app:layout_constraintStart_toStartOf="@id/tracker_btn_shot"
+        app:layout_constraintBottom_toBottomOf="@id/tracker_btn_shot"
+        app:layout_constraintEnd_toEndOf="@id/tracker_btn_shot"
+        app:layout_constraintTop_toTopOf="@id/tracker_btn_shot" />
+
+    <ImageView
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/tracker_shot_back"
+        app:layout_constraintBottom_toBottomOf="@id/tracker_btn_shot"
+        app:layout_constraintEnd_toEndOf="@id/tracker_btn_shot"
+        app:layout_constraintStart_toStartOf="@id/tracker_btn_shot"
+        app:layout_constraintTop_toTopOf="@id/tracker_btn_shot" />
+
+    <Button
+        android:id="@+id/tracker_btn_shot"
+        android:layout_width="69dp"
+        android:layout_height="69dp"
+        android:layout_marginBottom="2dp"
+        android:adjustViewBounds="true"
+        android:background="@drawable/shot_btn"
+        android:stateListAnimator="@null"
+        app:layout_constraintBottom_toTopOf="@id/tracker_iv_selected"
+        app:layout_constraintEnd_toEndOf="@id/tracker_iv_trackerBottom"
+        app:layout_constraintStart_toStartOf="@id/tracker_iv_trackerBottom" />
+</android.support.constraint.ConstraintLayout>

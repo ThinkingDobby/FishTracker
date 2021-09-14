@@ -10,7 +10,6 @@ darkchub
 carp
 eel
 leather
-shark
 skin
 minnow
 goby
