@@ -1,7 +1,5 @@
 package com.example.thinkingdobby.fishtracker
 
-//import com.wonderkiln.camerakit.CameraListener
-
 import android.Manifest
 import android.app.Activity
 import android.content.Intent
@@ -43,8 +41,6 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
         initVisibility()
         tracker_tv_resultSubEnd.paintFlags = Paint.UNDERLINE_TEXT_FLAG
 
-        // scale, seekBar 이용해 크기 조절 구현 시도할 것
-
         // 상태바 투명화
         window.apply {
             decorView.systemUiVisibility =
@@ -80,18 +76,6 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
 
         // cameraview library has its own permission check method
         cameraView!!.setPermissions(CameraKit.Constants.PERMISSIONS_PICTURE)
-
-        // invoke tensorflow inference when picture taken from camera
-        /*
-        cameraView!!.setCameraListener(object : CameraListener() {
-            override fun onPictureTaken(picture: ByteArray) {
-                super.onPictureTaken(picture)
-                val bitmap = BitmapFactory.decodeByteArray(picture, 0, picture.size)
-                recognize_bitmap(bitmap)
-            }
-        })
-
-         */
 
         val cameraListener: CameraKitEventListener = object : CameraKitEventListener {
             override fun onEvent(cameraKitEvent: CameraKitEvent) {
