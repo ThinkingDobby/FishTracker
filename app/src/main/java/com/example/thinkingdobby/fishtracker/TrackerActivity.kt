@@ -1,5 +1,7 @@
 package com.example.thinkingdobby.fishtracker
 
+//import com.wonderkiln.camerakit.CameraListener
+
 import android.Manifest
 import android.app.Activity
 import android.content.Intent
@@ -15,9 +17,7 @@ import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
-import com.wonderkiln.camerakit.CameraKit
-import com.wonderkiln.camerakit.CameraListener
-import com.wonderkiln.camerakit.CameraView
+import com.wonderkiln.camerakit.*
 import kotlinx.android.synthetic.main.activity_tracker.*
 import java.io.File
 import java.io.FileOutputStream
@@ -82,6 +82,7 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
         cameraView!!.setPermissions(CameraKit.Constants.PERMISSIONS_PICTURE)
 
         // invoke tensorflow inference when picture taken from camera
+        /*
         cameraView!!.setCameraListener(object : CameraListener() {
             override fun onPictureTaken(picture: ByteArray) {
                 super.onPictureTaken(picture)
@@ -89,7 +90,27 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
                 recognize_bitmap(bitmap)
             }
         })
+
+         */
+
+        val cameraListener: CameraKitEventListener = object : CameraKitEventListener {
+            override fun onEvent(cameraKitEvent: CameraKitEvent) {
+            }
+
+            override fun onError(cameraKitError: CameraKitError) {}
+            override fun onImage(cameraKitImage: CameraKitImage) {
+                val bitmap = BitmapFactory.decodeByteArray(cameraKitImage.jpeg, 0, cameraKitImage.jpeg.size)
+                recognize_bitmap(bitmap)
+            }
+
+            override fun onVideo(cameraKitVideo: CameraKitVideo) {}
+        }
+
+        cameraView!!.addCameraKitListener(cameraListener)
     }
+
+
+
 
     override fun onDestroy() {
         super.onDestroy()
