@@ -4,19 +4,266 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorWhite"
     tools:context=".MenuActivity">
+    
+    <TextView
+        android:layout_width="318dp"
+        android:layout_height="61dp"
+        android:text="메뉴를 선택하세요."
+        android:fontFamily="@font/noto_medium"
+        android:textSize="32sp"
+        android:textColor="@color/colorPrimary"
+        android:layout_marginStart="24dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/menu_iv_card"/>
+
 
     <ImageView
+        android:id="@+id/menu_iv_shadow"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="18dp"
-        android:layout_marginRight="18dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="20dp"
+        android:scaleType="fitEnd"
+        android:src="@drawable/menu_shadow"
+        android:adjustViewBounds="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/menu_iv_card"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/menu_iv_card"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="18dp"
         android:src="@drawable/menu_card"
-        android:scaleType="fitXY"
-        android:layout_marginTop="200dp"
-        android:stateListAnimator="@null"
+        android:scaleType="fitEnd"
+        android:adjustViewBounds="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <android.support.v7.widget.CardView
+        android:id="@+id/menu_cv_1"
+        android:layout_width="0dp"
+        android:layout_height="103dp"
+        android:layout_marginTop="12dp"
+        android:elevation="0dp"
+        app:cardBackgroundColor="#00000000"
+        app:layout_constraintTop_toTopOf="@id/menu_iv_card"
+        app:layout_constraintStart_toStartOf="@id/menu_iv_card"
+        app:layout_constraintEnd_toEndOf="@id/menu_iv_card">
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/menu_iv_icon1"
+                android:layout_width="23dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="39dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:src="@drawable/menu_icon_individual"
+                android:contentDescription="개인" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:orientation="vertical"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+                <TextView
+                    android:layout_width="223dp"
+                    android:layout_height="23dp"
+                    android:text="개인 메뉴"
+                    android:fontFamily="@font/noto_bold"
+                    android:textColor="@color/colorDark"
+                    android:textSize="14sp"/>
+                <TextView
+                    android:layout_width="220dp"
+                    android:layout_height="28dp"
+                    android:text="사용자가 여태까지 수집한 물고기들을 확인할 수 있습니다."
+                    android:fontFamily="@font/noto_regular"
+                    android:textColor="@color/colorDark"
+                    android:textSize="10sp"/>
+            </LinearLayout>
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
+    <ImageView
+        android:id="@+id/menu_iv_line1"
+        android:layout_width="259dp"
+        android:layout_height="1dp"
+        android:src="@drawable/menu_line"
+        app:layout_constraintTop_toBottomOf="@id/menu_cv_1"
+        app:layout_constraintStart_toStartOf="@id/menu_iv_card"
+        app:layout_constraintEnd_toEndOf="@id/menu_iv_card"
+        android:contentDescription="" />
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/menu_cv_2"
+        android:layout_width="0dp"
+        android:layout_height="103dp"
+        android:elevation="0dp"
+        app:cardBackgroundColor="#00000000"
+        app:layout_constraintTop_toBottomOf="@id/menu_iv_line1"
+        app:layout_constraintStart_toStartOf="@id/menu_iv_card"
+        app:layout_constraintEnd_toEndOf="@id/menu_iv_card">
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/menu_iv_icon2"
+                android:layout_width="35dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="33dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:src="@drawable/menu_icon_group"
+                android:contentDescription="그룹" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:orientation="vertical"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+                <TextView
+                    android:layout_width="223dp"
+                    android:layout_height="23dp"
+                    android:text="그룹 메뉴"
+                    android:fontFamily="@font/noto_bold"
+                    android:textColor="@color/colorDark"
+                    android:textSize="14sp"/>
+                <TextView
+                    android:layout_width="220dp"
+                    android:layout_height="28dp"
+                    android:text="그룹을 생성하거나 참여해 수집한 물고기를 공유할 수 있습니다."
+                    android:fontFamily="@font/noto_regular"
+                    android:textColor="@color/colorDark"
+                    android:textSize="10sp"/>
+            </LinearLayout>
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
+    <ImageView
+        android:id="@+id/menu_iv_line2"
+        android:layout_width="259dp"
+        android:layout_height="1dp"
+        android:src="@drawable/menu_line"
+        app:layout_constraintTop_toBottomOf="@id/menu_cv_2"
+        app:layout_constraintStart_toStartOf="@id/menu_iv_card"
+        app:layout_constraintEnd_toEndOf="@id/menu_iv_card"
+        android:contentDescription="" />
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/menu_cv_3"
+        android:layout_width="0dp"
+        android:layout_height="103dp"
+        android:elevation="0dp"
+        app:cardBackgroundColor="#00000000"
+        app:layout_constraintTop_toBottomOf="@id/menu_iv_line2"
+        app:layout_constraintStart_toStartOf="@id/menu_iv_card"
+        app:layout_constraintEnd_toEndOf="@id/menu_iv_card">
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/menu_iv_icon3"
+                android:layout_width="35dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="34dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:src="@drawable/menu_icon_fishbook"
+                android:contentDescription="도감" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:orientation="vertical"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+                <TextView
+                    android:layout_width="223dp"
+                    android:layout_height="23dp"
+                    android:text="물고기 도감"
+                    android:fontFamily="@font/noto_bold"
+                    android:textColor="@color/colorDark"
+                    android:textSize="14sp"/>
+                <TextView
+                    android:layout_width="220dp"
+                    android:layout_height="28dp"
+                    android:text="다양한 종류의 물고기에 대한 설명을 확인할 수 있습니다."
+                    android:fontFamily="@font/noto_regular"
+                    android:textColor="@color/colorDark"
+                    android:textSize="10sp"/>
+            </LinearLayout>
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
+    <ImageView
+        android:id="@+id/menu_iv_line3"
+        android:layout_width="259dp"
+        android:layout_height="1dp"
+        android:src="@drawable/menu_line"
+        app:layout_constraintTop_toBottomOf="@id/menu_cv_3"
+        app:layout_constraintStart_toStartOf="@id/menu_iv_card"
+        app:layout_constraintEnd_toEndOf="@id/menu_iv_card"
+        android:contentDescription="" />
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/menu_cv_4"
+        android:layout_width="0dp"
+        android:layout_height="103dp"
+        android:elevation="0dp"
+        app:cardBackgroundColor="#00000000"
+        app:layout_constraintTop_toBottomOf="@id/menu_iv_line3"
+        app:layout_constraintStart_toStartOf="@id/menu_iv_card"
+        app:layout_constraintEnd_toEndOf="@id/menu_iv_card">
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/menu_iv_icon4"
+                android:layout_width="35dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="33dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:src="@drawable/menu_icon_information"
+                android:contentDescription="정보" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:orientation="vertical"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+                <TextView
+                    android:layout_width="223dp"
+                    android:layout_height="23dp"
+                    android:text="상세 정보"
+                    android:fontFamily="@font/noto_bold"
+                    android:textColor="@color/colorDark"
+                    android:textSize="14sp"/>
+                <TextView
+                    android:layout_width="220dp"
+                    android:layout_height="28dp"
+                    android:text="애플리케이션 사용 방법과 정보 및 주의 사항을 확인합니다."
+                    android:fontFamily="@font/noto_regular"
+                    android:textColor="@color/colorDark"
+                    android:textSize="10sp"/>
+            </LinearLayout>
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
 </android.support.constraint.ConstraintLayout>
