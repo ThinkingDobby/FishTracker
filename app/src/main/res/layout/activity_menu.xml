@@ -79,7 +79,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent">
                 <TextView
-                    android:layout_width="223dp"
+                    android:layout_width="220dp"
                     android:layout_height="wrap_content"
                     android:includeFontPadding="false"
                     android:text="개인 메뉴"
@@ -91,10 +91,10 @@
                     android:layout_width="220dp"
                     android:layout_height="wrap_content"
                     android:includeFontPadding="false"
-                    android:text="사용자가 여태까지 수집한 물고기들을 확인할 수 있습니다."
+                    android:text="사용자가 여태까지 수집한 물고기를 확인할 수 있습니다."
                     android:fontFamily="@font/noto_regular"
                     android:textColor="@color/colorDark"
-                    android:textSize="10sp"/>
+                    android:textSize="11sp"/>
             </LinearLayout>
         </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.CardView>
@@ -139,7 +139,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent">
                 <TextView
-                    android:layout_width="223dp"
+                    android:layout_width="220dp"
                     android:layout_height="wrap_content"
                     android:includeFontPadding="false"
                     android:text="그룹 메뉴"
@@ -154,7 +154,7 @@
                     android:text="그룹을 생성 및 참여해 수집한 물고기를 공유할 수 있습니다."
                     android:fontFamily="@font/noto_regular"
                     android:textColor="@color/colorDark"
-                    android:textSize="10sp"/>
+                    android:textSize="11sp"/>
             </LinearLayout>
         </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.CardView>
@@ -199,7 +199,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent">
                 <TextView
-                    android:layout_width="223dp"
+                    android:layout_width="220dp"
                     android:layout_height="wrap_content"
                     android:includeFontPadding="false"
                     android:text="물고기 도감"
@@ -214,7 +214,7 @@
                     android:text="다양한 종류의 물고기에 대한 설명을 확인할 수 있습니다."
                     android:fontFamily="@font/noto_regular"
                     android:textColor="@color/colorDark"
-                    android:textSize="10sp"/>
+                    android:textSize="11sp"/>
             </LinearLayout>
         </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.CardView>
@@ -259,7 +259,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent">
                 <TextView
-                    android:layout_width="223dp"
+                    android:layout_width="220dp"
                     android:layout_height="wrap_content"
                     android:text="상세 정보"
                     android:layout_marginBottom="4dp"
@@ -271,10 +271,10 @@
                     android:layout_width="220dp"
                     android:layout_height="wrap_content"
                     android:includeFontPadding="false"
-                    android:text="애플리케이션 사용 방법과 정보 및 주의 사항을 확인합니다."
+                    android:text="애플리케이션 사용방법과 정보 및 주의사항을 확인합니다."
                     android:fontFamily="@font/noto_regular"
                     android:textColor="@color/colorDark"
-                    android:textSize="10sp"/>
+                    android:textSize="11sp"/>
             </LinearLayout>
         </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.CardView>
