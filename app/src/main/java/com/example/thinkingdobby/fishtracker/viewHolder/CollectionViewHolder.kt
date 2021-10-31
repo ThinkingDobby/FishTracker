@@ -13,7 +13,7 @@ class CollectionViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val fish_cv_tv_date = itemView.fish_cv_tv_date
 
     fun bind(fish: Fish, bitmap: Bitmap) {
-        fish_cv_tv_name.text = fish.name
+        fish_cv_tv_name.text = fish.fishName
         fish_cv_tv_date.text = fish.date
 
         fun imgRotate(bmp: Bitmap): Bitmap {
