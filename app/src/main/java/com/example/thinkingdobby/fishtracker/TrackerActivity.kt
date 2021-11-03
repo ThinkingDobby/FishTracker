@@ -9,6 +9,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.View
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
@@ -173,6 +174,8 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
         if (requestCode == PICK_IMAGE) {
             if (resultCode == Activity.RESULT_OK) {
                 val uriPhoto = data!!.data
+                Log.d("uriPhoto", uriPhoto.toString())
+                Log.d("realUriPhoto", createCopyAndReturnRealPath(uriPhoto!!))
                 val bitmap = MediaStore.Images.Media.getBitmap(applicationContext.contentResolver, uriPhoto)
 
                 // 이미지 회전되는 문제 해결

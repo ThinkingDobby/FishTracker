@@ -5,13 +5,13 @@ import android.arch.persistence.room.*
 
 @Dao
 interface FishDao {
-    @Query("SELECT * FROM Fish ORDER BY fishNo")
+    @Query("SELECT * FROM Fish ORDER BY id")
     fun getAll(): LiveData<List<Fish>>
 
-    @Query("SELECT * FROM Fish WHERE fishNo = :num")
+    @Query("SELECT * FROM Fish WHERE id = :num")
     fun getByFishNo(num: Int): LiveData<List<Fish>>
 
-    @Query("UPDATE Fish Set image = :newImage WHERE fishNo = :num")
+    @Query("UPDATE Fish Set image = :newImage WHERE id = :num")
     fun updateByFishNo(num: Int, newImage: ByteArray)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

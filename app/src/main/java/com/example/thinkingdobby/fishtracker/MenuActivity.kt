@@ -2,16 +2,18 @@ package com.example.thinkingdobby.fishtracker
 
 import android.content.Intent
 import android.graphics.Bitmap
+import android.media.ExifInterface
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.example.thinkingdobby.fishtracker.data.Fish
 import com.example.thinkingdobby.fishtracker.data.FishDB
 import kotlinx.android.synthetic.main.activity_menu.*
-import java.io.ByteArrayOutputStream
+import java.io.*
 import kotlin.concurrent.thread
 
 
@@ -45,18 +47,25 @@ class MenuActivity : AppCompatActivity() {
                 fishDB = FishDB.getInstance(this@MenuActivity)
                 fishDB?.fishDao()?.deleteAll()
 
+                val uri = Uri.parse("android.resource://com.example.thinkingdobby.fishtracker/drawable/collection_icon_carp")
+                val ei = ExifInterface(createCopyAndReturnRealPath(uri))
+                val orientation = ei.getAttributeInt(ExifInterface.TAG_ORIENTATION,
+                        ExifInterface.ORIENTATION_UNDEFINED)
+
                 val carrasius = Fish()
                 carrasius.date = "아직 수집되지 않았음"
                 carrasius.fishName = "붕어"
-                carrasius.fishNo = 1
-                carrasius.image = getByteArrayFromDrawable(Uri.parse("android.resource://com.example.thinkingdobby.fishtracker/drawable/collection_icon_carp"))
+                carrasius.id = 1
+                carrasius.imgOt = orientation
+                carrasius.image = getByteArrayFromDrawable(uri)
                 fishDB?.fishDao()?.insert(carrasius)
 
                 val carp = Fish()
                 carp.date = "아직 수집되지 않았음"
                 carp.fishName = "잉어"
-                carp.fishNo = 2
-                carp.image = getByteArrayFromDrawable(Uri.parse("android.resource://com.example.thinkingdobby.fishtracker/drawable/collection_icon_carp"))
+                carp.id = 2
+                carp.imgOt = orientation
+                carp.image = getByteArrayFromDrawable(uri)
                 fishDB?.fishDao()?.insert(carp)
             }
         } else {
@@ -73,5 +82,27 @@ class MenuActivity : AppCompatActivity() {
         bitmap.compress(Bitmap.CompressFormat.JPEG, 10, stream)
 
         return stream.toByteArray()
+    }
+
+    private fun createCopyAndReturnRealPath(uri: Uri) :String? {
+        val context = applicationContext
+        val contentResolver = context.contentResolver ?: return null
+
+        // Create file path inside app's data dir
+        val filePath = (context.applicationInfo.dataDir + File.separator
+                + System.currentTimeMillis())
+        val file = File(filePath)
+        try {
+            val inputStream = contentResolver.openInputStream(uri) ?: return null
+            val outputStream: OutputStream = FileOutputStream(file)
+            val buf = ByteArray(1024)
+            var len: Int
+            while (inputStream.read(buf).also { len = it } > 0) outputStream.write(buf, 0, len)
+            outputStream.close()
+            inputStream.close()
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+        return file.absolutePath
     }
 }

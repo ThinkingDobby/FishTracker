@@ -20,6 +20,7 @@
             android:layout_margin="5dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            android:background="@color/colorWhite"
             android:src="@drawable/collection_icon_carp"/>
 
         <TextView
