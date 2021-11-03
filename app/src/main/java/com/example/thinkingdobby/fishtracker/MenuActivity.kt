@@ -12,6 +12,7 @@ import android.view.View
 import android.widget.Toast
 import com.example.thinkingdobby.fishtracker.data.Fish
 import com.example.thinkingdobby.fishtracker.data.FishDB
+import com.example.thinkingdobby.fishtracker.functions.createCopyAndReturnRealPath
 import kotlinx.android.synthetic.main.activity_menu.*
 import java.io.*
 import kotlin.concurrent.thread
@@ -48,7 +49,7 @@ class MenuActivity : AppCompatActivity() {
                 fishDB?.fishDao()?.deleteAll()
 
                 val uri = Uri.parse("android.resource://com.example.thinkingdobby.fishtracker/drawable/collection_icon_carp")
-                val ei = ExifInterface(createCopyAndReturnRealPath(uri))
+                val ei = ExifInterface(createCopyAndReturnRealPath(applicationContext, uri))
                 val orientation = ei.getAttributeInt(ExifInterface.TAG_ORIENTATION,
                         ExifInterface.ORIENTATION_UNDEFINED)
 
@@ -82,27 +83,5 @@ class MenuActivity : AppCompatActivity() {
         bitmap.compress(Bitmap.CompressFormat.JPEG, 10, stream)
 
         return stream.toByteArray()
-    }
-
-    private fun createCopyAndReturnRealPath(uri: Uri) :String? {
-        val context = applicationContext
-        val contentResolver = context.contentResolver ?: return null
-
-        // Create file path inside app's data dir
-        val filePath = (context.applicationInfo.dataDir + File.separator
-                + System.currentTimeMillis())
-        val file = File(filePath)
-        try {
-            val inputStream = contentResolver.openInputStream(uri) ?: return null
-            val outputStream: OutputStream = FileOutputStream(file)
-            val buf = ByteArray(1024)
-            var len: Int
-            while (inputStream.read(buf).also { len = it } > 0) outputStream.write(buf, 0, len)
-            outputStream.close()
-            inputStream.close()
-        } catch (e: IOException) {
-            e.printStackTrace()
-        }
-        return file.absolutePath
     }
 }

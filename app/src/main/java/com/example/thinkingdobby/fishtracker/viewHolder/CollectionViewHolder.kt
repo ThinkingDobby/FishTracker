@@ -1,11 +1,11 @@
 package com.example.thinkingdobby.fishtracker.viewHolder
 
 import android.graphics.Bitmap
-import android.graphics.Matrix
 import android.media.ExifInterface
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.example.thinkingdobby.fishtracker.data.Fish
+import com.example.thinkingdobby.fishtracker.functions.rotateImage
 import kotlinx.android.synthetic.main.fish_card.view.*
 
 class CollectionViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -26,12 +26,5 @@ class CollectionViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         }
 
         fish_cv_iv_fish.setImageBitmap(rotatedBitmap)
-    }
-
-    private fun rotateImage(source: Bitmap, angle: Float): Bitmap {
-        val matrix = Matrix()
-        matrix.postRotate(angle)
-        return Bitmap.createBitmap(source, 0, 0, source.width, source.height,
-                matrix, true)
     }
 }
