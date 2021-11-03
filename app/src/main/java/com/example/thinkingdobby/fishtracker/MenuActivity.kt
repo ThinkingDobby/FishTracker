@@ -40,23 +40,30 @@ class MenuActivity : AppCompatActivity() {
             editor.putBoolean("isFirst", true)
             editor.apply()
             Toast.makeText(this@MenuActivity, "Test", Toast.LENGTH_SHORT).show()
-            thread {
+            thread {    // 비동기 처리 필요
+                // 테스트
                 fishDB = FishDB.getInstance(this@MenuActivity)
-                val fish = Fish()
-                fish.date = "11월 1일"
-                fish.fishName = "꺽지"
-                fish.fishNo = 3
-                fish.id = 123
-                fish.image = getByteArrayFromDrawable(Uri.parse("android.resource://com.example.thinkingdobby.fishtracker/drawable/collection_icon_carp"))
-                fishDB?.fishDao()?.insert(fish)
+                fishDB?.fishDao()?.deleteAll()
+
+                val carrasius = Fish()
+                carrasius.date = "아직 수집되지 않았음"
+                carrasius.fishName = "붕어"
+                carrasius.fishNo = 1
+                carrasius.image = getByteArrayFromDrawable(Uri.parse("android.resource://com.example.thinkingdobby.fishtracker/drawable/collection_icon_carp"))
+                fishDB?.fishDao()?.insert(carrasius)
+
+                val carp = Fish()
+                carp.date = "아직 수집되지 않았음"
+                carp.fishName = "잉어"
+                carp.fishNo = 2
+                carp.image = getByteArrayFromDrawable(Uri.parse("android.resource://com.example.thinkingdobby.fishtracker/drawable/collection_icon_carp"))
+                fishDB?.fishDao()?.insert(carp)
             }
         } else {
-            /*
+            // 테스트 위함 - 최초 실행 환경으로 전환
             val editor = pref.edit()
             editor.putBoolean("isFirst", false)
             editor.apply()
-
-             */
         }
     }
 

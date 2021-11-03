@@ -40,7 +40,7 @@ class CollectionActivity : AppCompatActivity() {
             val bitmapList = mutableListOf<Bitmap>()
             for (i in it!!) {
                 val options = BitmapFactory.Options()
-                options.inSampleSize = 16
+//                options.inSampleSize = 16
                 val bitmap = BitmapFactory.decodeByteArray(i.image, 0, i.image!!.size, options)
                 bitmapList.add(bitmap)
             }

@@ -16,6 +16,7 @@ class CollectionViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fish_cv_tv_name.text = fish.fishName
         fish_cv_tv_date.text = fish.date
 
+        /*
         fun imgRotate(bmp: Bitmap): Bitmap {
             val width = bmp.width
             val height = bmp.height
@@ -29,6 +30,9 @@ class CollectionViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             return resizedBitmap
         }
 
-        fish_cv_iv_fish.setImageBitmap(imgRotate(bitmap))
+         */
+
+//        fish_cv_iv_fish.setImageBitmap(imgRotate(bitmap))
+        fish_cv_iv_fish.setImageBitmap(bitmap)
     }
 }

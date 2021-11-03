@@ -19,4 +19,7 @@ interface FishDao {
 
     @Delete
     fun delete(fish: Fish)
+
+    @Query("DELETE FROM Fish")
+    fun deleteAll()
 }
