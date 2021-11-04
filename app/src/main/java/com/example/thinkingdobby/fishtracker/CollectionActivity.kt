@@ -28,7 +28,7 @@ class CollectionActivity : AppCompatActivity() {
             statusBarColor = Color.TRANSPARENT
         }
 
-        collection_btn_back.setOnClickListener {
+        collection_v_backArea.setOnClickListener {
             finish()
         }
 

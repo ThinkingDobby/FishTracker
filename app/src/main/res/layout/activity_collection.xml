@@ -7,6 +7,20 @@
     android:background="@color/colorWhite"
     tools:context=".CollectionActivity">
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/collection_rv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="12dp"
+        android:paddingTop="38dp"
+        android:clipToPadding="false"
+        app:layout_constraintTop_toBottomOf="@id/collection_btn_back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
     <!--상단 바-->
     <ImageView
         android:id="@+id/collection_iv_top"
@@ -28,6 +42,15 @@
         app:layout_constraintBottom_toBottomOf="@id/collection_iv_top"
         app:layout_constraintStart_toStartOf="@id/collection_iv_top"
         android:src="@drawable/arrow_right"/>
+
+    <View
+        android:id="@+id/collection_v_backArea"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toStartOf="@id/collection_btn_back"
+        app:layout_constraintEnd_toEndOf="@id/collection_btn_back"
+        app:layout_constraintTop_toTopOf="@id/collection_btn_back"
+        app:layout_constraintBottom_toBottomOf="@id/collection_btn_back"/>
 
     <TextView
         android:id="@+id/collection_tv_titleSub"
@@ -56,16 +79,5 @@
         app:layout_constraintStart_toStartOf="@id/collection_tv_titleSub"
         app:layout_constraintEnd_toEndOf="@id/collection_tv_titleSub"/>
     <!--상단 바-->
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/collection_rv"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:padding="12dp"
-        android:clipToPadding="false"
-        app:layout_constraintTop_toBottomOf="@id/collection_iv_top"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
 
 </android.support.constraint.ConstraintLayout>
