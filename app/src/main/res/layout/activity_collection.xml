@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,21 +8,22 @@
     android:background="@color/colorWhite"
     tools:context=".CollectionActivity">
 
+    <!--상단 바-->
     <android.support.v7.widget.RecyclerView
         android:id="@+id/collection_rv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"
-        android:paddingBottom="12dp"
-        android:paddingTop="38dp"
+        android:background="@color/colorWhite"
         android:clipToPadding="false"
-        app:layout_constraintTop_toBottomOf="@id/collection_btn_back"
+        android:paddingStart="22dp"
+        android:paddingTop="40dp"
+        android:paddingEnd="22dp"
+        android:paddingBottom="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/collection_btn_back"/>
 
-    <!--상단 바-->
     <ImageView
         android:id="@+id/collection_iv_top"
         android:layout_width="0dp"
