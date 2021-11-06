@@ -26,13 +26,23 @@
             android:background="@color/colorWhite"
             android:src="@drawable/collection_icon_carp"/>
 
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:adjustViewBounds="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:src="@drawable/collection_card_bottom"/>
+
         <TextView
             android:id="@+id/fish_cv_tv_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="2021년 10월 28일"
             android:fontFamily="@font/noto_regular"
-            android:textColor="@color/colorDark"
+            android:includeFontPadding="false"
+            android:textColor="@color/colorGray"
             android:textSize="11sp"
             android:layout_marginStart="11dp"
             android:layout_marginBottom="14dp"
@@ -45,7 +55,8 @@
             android:layout_height="wrap_content"
             android:text="붕어"
             android:fontFamily="@font/noto_bold"
-            android:textColor="@color/colorDark"
+            android:includeFontPadding="false"
+            android:textColor="@color/colorGray"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="@id/fish_cv_tv_date"
             app:layout_constraintBottom_toTopOf="@id/fish_cv_tv_date"/>
