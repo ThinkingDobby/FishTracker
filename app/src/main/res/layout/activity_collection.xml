@@ -8,7 +8,6 @@
     android:background="@color/colorWhite"
     tools:context=".CollectionActivity">
 
-    <!--상단 바-->
     <android.support.v7.widget.RecyclerView
         android:id="@+id/collection_rv"
         android:layout_width="match_parent"
@@ -24,6 +23,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/collection_btn_back"/>
 
+    <!--상단 바-->
     <ImageView
         android:id="@+id/collection_iv_top"
         android:layout_width="0dp"
