@@ -4,6 +4,8 @@ import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.example.thinkingdobby.fishtracker.data.Fish
+import kotlinx.android.synthetic.main.activity_collection_detail.*
 
 class CollectionDetailActivity : AppCompatActivity() {
 
@@ -17,5 +19,15 @@ class CollectionDetailActivity : AppCompatActivity() {
                             View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
             statusBarColor = Color.TRANSPARENT
         }
+
+        collectionDetail_v_backArea.setOnClickListener {
+            finish()
+        }
+
+        val bundle = intent.extras
+        val fish = bundle?.getParcelable<Fish>("selectedFish")
+
+        collectionDetail_tv_titleMain.text = fish?.fishName
+        collectionDetail_tv_date.text = fish?.date
     }
 }

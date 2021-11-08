@@ -52,6 +52,7 @@
         app:layout_constraintEnd_toEndOf="@id/collectionDetail_iv_top"/>
 
     <TextView
+        android:id="@+id/collectionDetail_tv_titleMain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="붕어"
@@ -103,7 +104,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:layout_marginStart="8dp"
-                android:text="최초 수집일"
+                android:text="수집일"
                 android:includeFontPadding="false"
                 android:fontFamily="@font/noto_regular"
                 android:textColor="@color/colorDark"
@@ -227,7 +228,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="사진 변경"
+                android:text="정보 변경"
                 android:textSize="13sp"
                 android:fontFamily="@font/noto_medium"
                 android:textColor="@color/colorWhite"
@@ -250,7 +251,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="사진 제거"
+                android:text="초기화"
                 android:textSize="13sp"
                 android:fontFamily="@font/noto_medium"
                 android:textColor="@color/colorRed"
