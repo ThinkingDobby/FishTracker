@@ -29,5 +29,9 @@ class CollectionDetailActivity : AppCompatActivity() {
 
         collectionDetail_tv_titleMain.text = fish?.fishName
         collectionDetail_tv_date.text = fish?.date
+        collectionDetail_tv_location.text = fish?.location
+        collectionDetail_tv_count.text = fish?.count.toString()
+        collectionDetail_tv_size.text = fish?.size.toString()
+        collectionDetail_tv_info.text = fish?.info
     }
 }

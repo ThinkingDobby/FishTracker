@@ -12,6 +12,8 @@ class Fish(@PrimaryKey var id: Long?,
         @ColumnInfo(name = "date") var date: String?,
         @ColumnInfo(name = "location") var location: String?,
         @ColumnInfo(name = "info") var info: String?,
+        @ColumnInfo(name = "count") var count: Int?,
+        @ColumnInfo(name = "size") var size: Int?,
         @ColumnInfo(name = "fishNo") var fishNo: Int?,
         @ColumnInfo(name = "imgOt") var imgOt: Int?,
         @ColumnInfo(name = "image", typeAffinity = ColumnInfo.BLOB) var image: ByteArray?) : Parcelable {
@@ -24,10 +26,12 @@ class Fish(@PrimaryKey var id: Long?,
             parcel.readString(),
             parcel.readValue(Int::class.java.classLoader) as? Int,
             parcel.readValue(Int::class.java.classLoader) as? Int,
+            parcel.readValue(Int::class.java.classLoader) as? Int,
+            parcel.readValue(Int::class.java.classLoader) as? Int,
             parcel.createByteArray()) {
     }
 
-    constructor() : this(null, "", "", "", "", null,null, null)
+    constructor() : this(null, "", "아직 수집되지 않았음", "아직 수집되지 않았음", "", 0, 0, null,null, null)
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeValue(id)
@@ -35,6 +39,8 @@ class Fish(@PrimaryKey var id: Long?,
         parcel.writeString(date)
         parcel.writeString(location)
         parcel.writeString(info)
+        parcel.writeValue(count)
+        parcel.writeValue(size)
         parcel.writeValue(fishNo)
         parcel.writeValue(imgOt)
         parcel.writeByteArray(image)
