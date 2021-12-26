@@ -1,5 +1,6 @@
 package com.example.thinkingdobby.fishtracker
 
+import android.content.Intent
 import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -22,6 +23,11 @@ class CollectionDetailActivity : AppCompatActivity() {
 
         collectionDetail_v_backArea.setOnClickListener {
             finish()
+        }
+
+        collectionDetail_btn_change.setOnClickListener {
+            val intent = Intent(this, CollectionDetailEditActivity::class.java)
+            startActivity(intent)
         }
 
         val bundle = intent.extras
