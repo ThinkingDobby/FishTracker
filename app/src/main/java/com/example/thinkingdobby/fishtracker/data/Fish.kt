@@ -10,10 +10,16 @@ import android.os.Parcelable
 class Fish(@PrimaryKey var id: Long?,
         @ColumnInfo(name = "fishName") var fishName: String?,
         @ColumnInfo(name = "date") var date: String?,
-        @ColumnInfo(name = "fishNo") var fishNo: Int?, @ColumnInfo(name = "imgOt") var imgOt: Int?,
+        @ColumnInfo(name = "location") var location: String?,
+        @ColumnInfo(name = "info") var info: String?,
+        @ColumnInfo(name = "fishNo") var fishNo: Int?,
+        @ColumnInfo(name = "imgOt") var imgOt: Int?,
         @ColumnInfo(name = "image", typeAffinity = ColumnInfo.BLOB) var image: ByteArray?) : Parcelable {
+
     constructor(parcel: Parcel) : this(
             parcel.readValue(Long::class.java.classLoader) as? Long,
+            parcel.readString(),
+            parcel.readString(),
             parcel.readString(),
             parcel.readString(),
             parcel.readValue(Int::class.java.classLoader) as? Int,
@@ -21,12 +27,14 @@ class Fish(@PrimaryKey var id: Long?,
             parcel.createByteArray()) {
     }
 
-    constructor() : this(null, "", "", null,null, null)
+    constructor() : this(null, "", "", "", "", null,null, null)
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeValue(id)
         parcel.writeString(fishName)
         parcel.writeString(date)
+        parcel.writeString(location)
+        parcel.writeString(info)
         parcel.writeValue(fishNo)
         parcel.writeValue(imgOt)
         parcel.writeByteArray(image)
@@ -45,4 +53,5 @@ class Fish(@PrimaryKey var id: Long?,
             return arrayOfNulls(size)
         }
     }
+
 }
