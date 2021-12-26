@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CollectionDetailActivity">
-    
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -46,7 +46,7 @@
                 android:includeFontPadding="false"
                 android:fontFamily="@font/noto_bold"
                 android:textColor="@color/colorDark"
-                android:textSize="12sp"
+                android:textSize="13sp"
                 app:layout_constraintTop_toBottomOf="@id/collectionDetail_cv_fish"
                 app:layout_constraintStart_toStartOf="@id/collectionDetail_cv_fish"/>
 
@@ -82,7 +82,7 @@
                 android:includeFontPadding="false"
                 android:fontFamily="@font/noto_bold"
                 android:textColor="@color/colorDark"
-                android:textSize="12sp"
+                android:textSize="13sp"
                 app:layout_constraintTop_toBottomOf="@id/collectionDetail_tv_date"
                 app:layout_constraintStart_toStartOf="@id/collectionDetail_tv_dateTitle"/>
 
@@ -118,7 +118,7 @@
                 android:includeFontPadding="false"
                 android:fontFamily="@font/noto_bold"
                 android:textColor="@color/colorDark"
-                android:textSize="12sp"
+                android:textSize="13sp"
                 app:layout_constraintTop_toBottomOf="@id/collectionDetail_tv_location"
                 app:layout_constraintStart_toStartOf="@id/collectionDetail_tv_locationTitle"/>
 
@@ -166,7 +166,7 @@
                 android:includeFontPadding="false"
                 android:fontFamily="@font/noto_bold"
                 android:textColor="@color/colorDark"
-                android:textSize="12sp"
+                android:textSize="13sp"
                 app:layout_constraintTop_toBottomOf="@id/collectionDetail_tv_count"
                 app:layout_constraintStart_toStartOf="@id/collectionDetail_tv_dateTitle"/>
 
@@ -214,7 +214,7 @@
                 android:includeFontPadding="false"
                 android:fontFamily="@font/noto_bold"
                 android:textColor="@color/colorDark"
-                android:textSize="12sp"
+                android:textSize="13sp"
                 app:layout_constraintTop_toBottomOf="@id/collectionDetail_tv_size"
                 app:layout_constraintStart_toStartOf="@id/collectionDetail_tv_dateTitle"/>
 
@@ -262,7 +262,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="정보 변경"
-                android:textSize="13sp"
+                android:textSize="14sp"
                 android:fontFamily="@font/noto_medium"
                 android:textColor="@color/colorDark"
                 android:includeFontPadding="false"
@@ -333,7 +333,5 @@
         app:layout_constraintStart_toStartOf="@id/collectionDetail_tv_titleSub"
         app:layout_constraintEnd_toEndOf="@id/collectionDetail_tv_titleSub"/>
     <!--상단 바-->
-
-
 
 </android.support.constraint.ConstraintLayout>
