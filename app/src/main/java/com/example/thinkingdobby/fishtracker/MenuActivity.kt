@@ -212,7 +212,7 @@ class MenuActivity : AppCompatActivity() {
     private fun getByteArrayFromDrawable(uri: Uri): ByteArray {
         val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, uri)
         val stream = ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 10, stream)
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 70, stream)
 
         return stream.toByteArray()
     }

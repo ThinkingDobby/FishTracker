@@ -11,8 +11,8 @@ interface FishDao {
     @Query("SELECT * FROM Fish WHERE id = :num")
     fun getByFishNo(num: Int): LiveData<List<Fish>>
 
-    @Query("UPDATE Fish Set image = :newImage WHERE id = :num")
-    fun updateByFishNo(num: Int, newImage: ByteArray)
+    @Query("UPDATE Fish SET fishName = :fishName, date = :date, location = :location, info = :info, count = :count, size = :size, imgOt = :imgOt, image = :image WHERE id = :id")
+    fun updateByFishId(id: Long, fishName: String, date: String, location: String, info: String, count: Int, size: Int, imgOt: Int, image: ByteArray)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(fish: Fish)
