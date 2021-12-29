@@ -59,6 +59,7 @@ class CollectionDetailActivity : AppCompatActivity() {
             fishBundle.putParcelable("selectedFish", fish)
             intent.putExtras(fishBundle)
             startActivity(intent)
+            finish()
         }
     }
 }

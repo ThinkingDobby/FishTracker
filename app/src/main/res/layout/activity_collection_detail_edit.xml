@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     tools:context=".CollectionDetailEditActivity">
     <ScrollView
         android:layout_width="match_parent"
@@ -66,10 +68,11 @@
                 android:layout_marginTop="8dp"
                 android:text="2021년 11월 7일"
                 android:inputType="text"
+                android:enabled="false"
                 android:background="@android:color/transparent"
                 android:includeFontPadding="false"
                 android:fontFamily="@font/noto_regular"
-                android:textColor="@color/colorDark"
+                android:textColor="@color/colorGray"
                 android:textSize="14sp"
                 app:layout_constraintTop_toBottomOf="@id/collectionDetailEdit_iv_line1"
                 app:layout_constraintStart_toStartOf="@id/collectionDetailEdit_tv_dateTitle"/>
@@ -181,10 +184,11 @@
                 android:layout_marginTop="8dp"
                 android:text="5"
                 android:includeFontPadding="false"
-                android:inputType="text"
+                android:enabled="false"
+                android:inputType="number"
                 android:background="@android:color/transparent"
                 android:fontFamily="@font/noto_regular"
-                android:textColor="@color/colorDark"
+                android:textColor="@color/colorGray"
                 android:textSize="14sp"
                 app:layout_constraintTop_toBottomOf="@id/collectionDetailEdit_iv_line3"
                 app:layout_constraintStart_toStartOf="@id/collectionDetailEdit_tv_countTitle"/>
@@ -211,7 +215,7 @@
                 app:layout_constraintBottom_toBottomOf="@id/collectionDetailEdit_tv_count"/>
             
             <ImageView
-                android:id="@+id/collectionDetail_btn_countUp"
+                android:id="@+id/collectionDetailEdit_btn_countUp"
                 android:layout_width="22dp"
                 android:layout_height="22dp"
                 android:layout_marginStart="15dp"
@@ -220,11 +224,12 @@
                 android:src="@drawable/btn_up"/>
 
             <ImageView
+                android:id="@+id/collectionDetailEdit_btn_countDown"
                 android:layout_width="22dp"
                 android:layout_height="22dp"
                 android:layout_marginStart="5dp"
-                app:layout_constraintStart_toEndOf="@id/collectionDetail_btn_countUp"
-                app:layout_constraintBottom_toBottomOf="@id/collectionDetail_btn_countUp"
+                app:layout_constraintStart_toEndOf="@id/collectionDetailEdit_btn_countUp"
+                app:layout_constraintBottom_toBottomOf="@id/collectionDetailEdit_btn_countUp"
                 android:src="@drawable/btn_down"/>
 
             <TextView
@@ -257,7 +262,7 @@
                 android:layout_marginTop="8dp"
                 android:text="40"
                 android:includeFontPadding="false"
-                android:inputType="text"
+                android:inputType="number"
                 android:background="@android:color/transparent"
                 android:fontFamily="@font/noto_regular"
                 android:textColor="@color/colorDark"

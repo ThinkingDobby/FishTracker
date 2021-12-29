@@ -1,9 +1,12 @@
 package com.example.thinkingdobby.fishtracker.viewHolder
 
 import android.graphics.Bitmap
+import android.graphics.Color
 import android.media.ExifInterface
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import com.example.thinkingdobby.fishtracker.R
 import com.example.thinkingdobby.fishtracker.data.Fish
 import com.example.thinkingdobby.fishtracker.functions.rotateImage
 import kotlinx.android.synthetic.main.fish_card.view.*
@@ -16,6 +19,12 @@ class CollectionViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     fun bind(fish: Fish, bitmap: Bitmap) {
         fish_cv_tv_name.text = fish.fishName
         fish_cv_tv_date.text = fish.date
+
+        if (fish.count.toString().toInt() > 0) {
+            fish_cv_tv_name.setTextColor(Color.parseColor("#191919"))
+        } else {
+            fish_cv_tv_name.setTextColor(Color.parseColor("#676767"))
+        }
 
         val rotatedBitmap = when (fish.imgOt) {
             ExifInterface.ORIENTATION_ROTATE_90 -> rotateImage(bitmap, 90f)

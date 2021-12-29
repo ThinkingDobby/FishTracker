@@ -31,7 +31,7 @@ class Fish(@PrimaryKey var id: Long?,
             parcel.createByteArray()) {
     }
 
-    constructor() : this(null, "", "아직 수집되지 않았음", "아직 수집되지 않았음", "", 0, 0, null,null, null)
+    constructor() : this(null, "", "정보 없음", "정보 없음", "", 0, 0, null,null, null)
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeValue(id)
