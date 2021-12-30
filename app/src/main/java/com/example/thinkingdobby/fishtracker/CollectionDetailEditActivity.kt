@@ -1,34 +1,37 @@
 package com.example.thinkingdobby.fishtracker
 
 import android.Manifest
+import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.media.ExifInterface
 import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.support.v4.app.ActivityCompat
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.DatePicker
 import android.widget.Toast
+import com.bumptech.glide.Glide
 import com.example.thinkingdobby.fishtracker.data.Fish
 import com.example.thinkingdobby.fishtracker.data.FishDB
+import com.example.thinkingdobby.fishtracker.functions.createCopyAndReturnRealPath
 import com.example.thinkingdobby.fishtracker.functions.rotateImage
 import kotlinx.android.synthetic.main.activity_collection_detail_edit.*
+import java.io.ByteArrayOutputStream
 import java.util.*
 import kotlin.concurrent.thread
 
 class CollectionDetailEditActivity : AppCompatActivity() {
     private var pickImageFromAlbum = 0
-    private var uriPhoto: Uri? = null
+    private var uriPhoto: Uri? = Uri.parse("android.resource://com.example.thinkingdobby.fishtracker/drawable/collection_icon_carp")
 
     private var fishDB: FishDB? = null
-    private lateinit var tempImage: ByteArray
-    private var tempOt = 0
     private var imageChanged = false
-    private var fishId = 0L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,6 +66,9 @@ class CollectionDetailEditActivity : AppCompatActivity() {
             }, year, month, date)
             dlg.show()
         }
+
+        collectionDetailEdit_btn_album.setOnClickListener { loadImage() }
+        collectionDetailEdit_tv_album.setOnClickListener { loadImage() }
 
         collectionDetailEdit_btn_countUp.setOnClickListener {
             val now = collectionDetailEdit_tv_count.text.toString().toInt()
@@ -104,8 +110,24 @@ class CollectionDetailEditActivity : AppCompatActivity() {
             updateFish.count = collectionDetailEdit_tv_count.text.toString().toInt()
             updateFish.size = collectionDetailEdit_tv_size.text.toString().toInt()
             updateFish.info = collectionDetailEdit_tv_info.text.toString()
+
+            val ei =
+                    ExifInterface(createCopyAndReturnRealPath(applicationContext, uriPhoto!!)!!)
+            val orientation = ei.getAttributeInt(
+                    ExifInterface.TAG_ORIENTATION,
+                    ExifInterface.ORIENTATION_UNDEFINED
+            )
+
+            updateFish.imgOt = orientation
+            updateFish.image = getByteArrayFromDrawable(uriPhoto!!)
+
             thread {
                 fishDB = FishDB.getInstance(this@CollectionDetailEditActivity)
+
+                if (!imageChanged) {
+                    updateFish.imgOt = fish.imgOt
+                    updateFish.image = fish.image
+                }
 
                 fishDB?.fishDao()?.updateByFishId(
                         fish.id!!,
@@ -115,12 +137,65 @@ class CollectionDetailEditActivity : AppCompatActivity() {
                         updateFish.info!!,
                         updateFish.count!!,
                         updateFish.size!!,
-                        fish.imgOt!!,
-                        fish.image!!
+                        updateFish.imgOt!!,
+                        updateFish.image!!
                 )
             }
             Toast.makeText(this@CollectionDetailEditActivity, "업로드되었습니다.", Toast.LENGTH_SHORT).show()
             finish()
         }
+    }
+
+    private fun loadImage() {
+        val intent = Intent()
+        intent.type = "image/*"
+        intent.action = Intent.ACTION_GET_CONTENT
+
+        startActivityForResult(Intent.createChooser(intent, "Load Picture"), pickImageFromAlbum)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == pickImageFromAlbum) {
+            if (resultCode == Activity.RESULT_OK) {
+                uriPhoto = data?.data
+                Glide.with(applicationContext)
+                        .load(uriPhoto)
+                        .into(collectionDetailEdit_cv_iv_fish)
+                imageChanged = true
+            }
+        }
+    }
+
+    private fun getByteArrayFromDrawable(uri: Uri): ByteArray {
+        val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, uri)
+
+        val width = bitmap.width
+        val height = bitmap.height
+
+        val scaledBitmap = if (width < height) {
+            if (width > 729) {
+                Bitmap.createScaledBitmap(
+                        bitmap,
+                        729,    // Xdp -> 3*X
+                        (height.toDouble() / (width.toDouble() / 729)).toInt(),
+                        true
+                )
+            } else bitmap
+        } else {
+            if (height > 972) {
+                Bitmap.createScaledBitmap(
+                        bitmap,
+                        (width.toDouble() / (height.toDouble() / 972)).toInt(),
+                        972,
+                        true
+                )
+            } else bitmap
+        }
+
+        val stream = ByteArrayOutputStream()
+        scaledBitmap.compress(Bitmap.CompressFormat.JPEG, 70, stream)
+
+        return stream.toByteArray()
     }
 }

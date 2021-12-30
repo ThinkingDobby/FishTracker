@@ -21,9 +21,11 @@ class CollectionViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fish_cv_tv_date.text = fish.date
 
         if (fish.count.toString().toInt() > 0) {
-            fish_cv_tv_name.setTextColor(Color.parseColor("#191919"))
+            fish_cv_tv_name.setTextColor(Color.parseColor("#fefefe"))
+            fish_cv_tv_date.setTextColor(Color.parseColor("#fefefe"))
         } else {
             fish_cv_tv_name.setTextColor(Color.parseColor("#676767"))
+            fish_cv_tv_date.setTextColor(Color.parseColor("#676767"))
         }
 
         val rotatedBitmap = when (fish.imgOt) {
