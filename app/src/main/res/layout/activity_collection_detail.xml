@@ -41,14 +41,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="42dp"
                 android:text="최초 수집일"
                 android:includeFontPadding="false"
                 android:fontFamily="@font/noto_bold"
                 android:textColor="@color/colorDark"
                 android:textSize="13sp"
                 app:layout_constraintTop_toBottomOf="@id/collectionDetail_cv_fish"
-                app:layout_constraintStart_toStartOf="@id/collectionDetail_cv_fish"/>
+                app:layout_constraintStart_toStartOf="parent"/>
 
             <ImageView
                 android:id="@+id/collectionDetail_iv_line1"

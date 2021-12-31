@@ -203,9 +203,9 @@ class MenuActivity : AppCompatActivity() {
             }
         } else {
             // 테스트 위함 - 최초 실행 환경으로 전환
-            val editor = pref.edit()
-            editor.putBoolean("isFirst", false)
-            editor.apply()
+//            val editor = pref.edit()
+//            editor.putBoolean("isFirst", false)
+//            editor.apply()
         }
     }
 

@@ -101,6 +101,18 @@ class CollectionDetailEditActivity : AppCompatActivity() {
             else -> bitmap
         }
 
+        if (rotatedBitmap.width > rotatedBitmap.height) {
+            val layoutParams = collectionDetailEdit_cv_fish.layoutParams
+            layoutParams.width = 876
+            layoutParams.height = 657
+            collectionDetailEdit_cv_fish.layoutParams = layoutParams
+        } else if (rotatedBitmap.width < rotatedBitmap.height) {
+            val layoutParams = collectionDetailEdit_cv_fish.layoutParams
+            layoutParams.width = 657
+            layoutParams.height = 876
+            collectionDetailEdit_cv_fish.layoutParams = layoutParams
+        }
+
         collectionDetailEdit_cv_iv_fish.setImageBitmap(rotatedBitmap)
 
         collectionDetailEdit_btn_change.setOnClickListener {
@@ -159,6 +171,33 @@ class CollectionDetailEditActivity : AppCompatActivity() {
         if (requestCode == pickImageFromAlbum) {
             if (resultCode == Activity.RESULT_OK) {
                 uriPhoto = data?.data
+                var tmpBitmap = MediaStore.Images.Media.getBitmap(contentResolver, uriPhoto)
+                val ei =
+                        ExifInterface(createCopyAndReturnRealPath(applicationContext, uriPhoto!!)!!)
+                val orientation = ei.getAttributeInt(
+                        ExifInterface.TAG_ORIENTATION,
+                        ExifInterface.ORIENTATION_UNDEFINED
+                )
+                tmpBitmap = when (orientation) {
+                    ExifInterface.ORIENTATION_ROTATE_90 -> rotateImage(tmpBitmap, 90f)
+                    ExifInterface.ORIENTATION_ROTATE_180 -> rotateImage(tmpBitmap, 180f)
+                    ExifInterface.ORIENTATION_ROTATE_270 -> rotateImage(tmpBitmap, 270f)
+                    ExifInterface.ORIENTATION_NORMAL -> tmpBitmap
+                    else -> tmpBitmap
+                }
+
+                if (tmpBitmap.width > tmpBitmap.height) {
+                    val layoutParams = collectionDetailEdit_cv_fish.layoutParams
+                    layoutParams.width = 876
+                    layoutParams.height = 657
+                    collectionDetailEdit_cv_fish.layoutParams = layoutParams
+                } else if (tmpBitmap.width < tmpBitmap.height) {
+                    val layoutParams = collectionDetailEdit_cv_fish.layoutParams
+                    layoutParams.width = 657
+                    layoutParams.height = 876
+                    collectionDetailEdit_cv_fish.layoutParams = layoutParams
+                }
+
                 Glide.with(applicationContext)
                         .load(uriPhoto)
                         .into(collectionDetailEdit_cv_iv_fish)

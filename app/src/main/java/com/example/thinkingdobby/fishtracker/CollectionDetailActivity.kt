@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.media.ExifInterface
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
@@ -49,6 +50,18 @@ class CollectionDetailActivity : AppCompatActivity() {
             ExifInterface.ORIENTATION_ROTATE_270 -> rotateImage(bitmap, 270f)
             ExifInterface.ORIENTATION_NORMAL -> bitmap
             else -> bitmap
+        }
+
+        if (rotatedBitmap.width > rotatedBitmap.height) {
+            val layoutParams = collectionDetail_cv_fish.layoutParams
+            layoutParams.width = 876
+            layoutParams.height = 657
+            collectionDetail_cv_fish.layoutParams = layoutParams
+        } else if (rotatedBitmap.width < rotatedBitmap.height) {
+            val layoutParams = collectionDetail_cv_fish.layoutParams
+            layoutParams.width = 657
+            layoutParams.height = 876
+            collectionDetail_cv_fish.layoutParams = layoutParams
         }
 
         collectionDetail_cv_iv_fish.setImageBitmap(rotatedBitmap)
