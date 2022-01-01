@@ -230,9 +230,11 @@
 
             <TextView
                 android:id="@+id/collectionDetail_tv_info"
-                android:layout_width="wrap_content"
+                android:layout_width="276dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:inputType="textMultiLine"
+                android:maxLines="2"
                 android:text="가장 좋아하는 물고기"
                 android:includeFontPadding="false"
                 android:fontFamily="@font/noto_regular"

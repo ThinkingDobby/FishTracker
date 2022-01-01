@@ -13,6 +13,8 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.support.v4.app.ActivityCompat
 import android.support.v7.app.AppCompatActivity
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.widget.DatePicker
 import android.widget.Toast
@@ -156,6 +158,24 @@ class CollectionDetailEditActivity : AppCompatActivity() {
             Toast.makeText(this@CollectionDetailEditActivity, "업로드되었습니다.", Toast.LENGTH_SHORT).show()
             finish()
         }
+
+        // EditText 줄 수 제한
+        collectionDetailEdit_tv_info.addTextChangedListener(object : TextWatcher{
+            var prev = ""
+
+            override fun afterTextChanged(p0: Editable?) {
+                if (collectionDetailEdit_tv_info.lineCount >= 3) {
+                    collectionDetailEdit_tv_info.setText(prev)
+                    collectionDetailEdit_tv_info.setSelection(collectionDetailEdit_tv_info.length())
+                }
+            }
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                prev = p0.toString()
+            }
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+        })
     }
 
     private fun loadImage() {

@@ -280,14 +280,25 @@
     </android.support.v7.widget.CardView>
 
     <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/tracker_shot_back"
+        app:layout_constraintBottom_toBottomOf="@id/menu_btn_back"
+        app:layout_constraintEnd_toEndOf="@id/menu_btn_back"
+        app:layout_constraintStart_toStartOf="@id/menu_btn_back"
+        app:layout_constraintTop_toTopOf="@id/menu_btn_back" />
+
+    <ImageView
         android:id="@+id/menu_btn_back"
-        android:layout_width="74dp"
-        android:layout_height="74dp"
-        android:src="@drawable/menu_back"
+        android:layout_width="66dp"
+        android:layout_height="66dp"
+        android:src="@drawable/back_btn"
         android:layout_marginStart="11dp"
         android:scaleType="fitEnd"
         android:adjustViewBounds="true"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="@id/menu_iv_card"
         app:layout_constraintStart_toStartOf="@id/menu_iv_card"/>
-
 </android.support.constraint.ConstraintLayout>

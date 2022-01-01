@@ -111,8 +111,8 @@
             
             <ImageView
                 android:id="@+id/collectionDetailEdit_btn_datePick"
-                android:layout_width="51dp"
-                android:layout_height="23dp"
+                android:layout_width="58dp"
+                android:layout_height="26dp"
                 android:layout_marginStart="15dp"
                 app:layout_constraintStart_toEndOf="@id/collectionDetailEdit_tv_date"
                 app:layout_constraintBottom_toBottomOf="@id/collectionDetailEdit_tv_date"
@@ -122,7 +122,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="선택"
-                android:textSize="10sp"
+                android:textSize="11sp"
                 android:fontFamily="@font/noto_medium"
                 android:includeFontPadding="false"
                 android:textColor="@color/colorDark"
@@ -239,8 +239,8 @@
             
             <ImageView
                 android:id="@+id/collectionDetailEdit_btn_countUp"
-                android:layout_width="22dp"
-                android:layout_height="22dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:layout_marginStart="15dp"
                 app:layout_constraintStart_toEndOf="@id/collectionDetailEdit_tv_countUnit"
                 app:layout_constraintBottom_toBottomOf="@id/collectionDetailEdit_tv_countUnit"
@@ -248,9 +248,9 @@
 
             <ImageView
                 android:id="@+id/collectionDetailEdit_btn_countDown"
-                android:layout_width="22dp"
-                android:layout_height="22dp"
-                android:layout_marginStart="5dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="12dp"
                 app:layout_constraintStart_toEndOf="@id/collectionDetailEdit_btn_countUp"
                 app:layout_constraintBottom_toBottomOf="@id/collectionDetailEdit_btn_countUp"
                 android:src="@drawable/btn_down"/>
@@ -336,16 +336,19 @@
                 app:layout_constraintEnd_toStartOf="@id/collectionDetailEdit_tv_infoTitle"
                 android:src="@drawable/title_line"/>
 
-            <!-- 추후 배경 이미지 수정 -->
             <EditText
                 android:id="@+id/collectionDetailEdit_tv_info"
-                android:layout_width="125dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_width="262dp"
+                android:layout_height="46dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="7dp"
+                android:maxLines="2"
                 android:text="가장 좋아하는 물고기"
-                android:includeFontPadding="false"
-                android:inputType="text"
+                android:inputType="textMultiLine"
+                android:scrollbars="vertical"
                 android:background="@android:color/transparent"
+                android:gravity="top"
+                android:includeFontPadding="false"
                 android:fontFamily="@font/noto_regular"
                 android:textColor="@color/colorDark"
                 android:textSize="14sp"
@@ -353,12 +356,13 @@
                 app:layout_constraintStart_toStartOf="@id/collectionDetailEdit_tv_infoTitle"/>
 
             <ImageView
-                android:layout_width="0dp"
-                android:layout_height="1dp"
+                android:layout_width="276dp"
+                android:layout_height="60dp"
                 app:layout_constraintStart_toStartOf="@id/collectionDetailEdit_tv_info"
                 app:layout_constraintEnd_toEndOf="@id/collectionDetailEdit_tv_info"
-                app:layout_constraintTop_toBottomOf="@id/collectionDetailEdit_tv_info"
-                android:src="@drawable/collection_detail_edit_line_long"/>
+                app:layout_constraintTop_toTopOf="@id/collectionDetailEdit_tv_info"
+                app:layout_constraintBottom_toBottomOf="@id/collectionDetailEdit_tv_info"
+                android:src="@drawable/menu_rect"/>
 
             <android.support.constraint.Guideline
                 android:id="@+id/collection_cv_gl"
