@@ -53,6 +53,7 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
 //            val intent = Intent(this@TrackerActivity, MenuActivity::class.java)
             val intent = Intent(this@TrackerActivity, CollectionActivity::class.java)   // 임시 조치
             startActivity(intent)
+            overridePendingTransition(R.anim.right_in, R.anim.left_out)
         }
 
         // initialize tensorflow async

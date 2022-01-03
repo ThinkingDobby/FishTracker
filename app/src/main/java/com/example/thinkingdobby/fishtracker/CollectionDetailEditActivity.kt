@@ -16,6 +16,7 @@ import android.support.v7.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.DatePicker
 import android.widget.Toast
 import com.bumptech.glide.Glide
@@ -38,6 +39,8 @@ class CollectionDetailEditActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_collection_detail_edit)
+
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
 
         // request permission
         ActivityCompat.requestPermissions(this,
@@ -176,6 +179,11 @@ class CollectionDetailEditActivity : AppCompatActivity() {
 
             }
         })
+    }
+
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
     }
 
     private fun loadImage() {

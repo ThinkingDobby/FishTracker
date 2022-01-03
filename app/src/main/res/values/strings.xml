@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">민물고기 도감</string>
+    <string name="slide_duration">300</string>
 </resources>

@@ -48,4 +48,9 @@ class CollectionActivity : AppCompatActivity() {
             collection_rv.adapter = fishAdapter
         })
     }
+
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(R.anim.left_in, R.anim.right_out)
+    }
 }

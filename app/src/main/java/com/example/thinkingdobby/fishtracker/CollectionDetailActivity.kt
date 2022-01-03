@@ -20,6 +20,8 @@ class CollectionDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_collection_detail)
 
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
+
         window.apply {
             decorView.systemUiVisibility =
                     View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
@@ -74,5 +76,10 @@ class CollectionDetailActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+    }
+
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
     }
 }

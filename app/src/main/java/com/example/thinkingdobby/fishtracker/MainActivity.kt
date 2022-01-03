@@ -28,6 +28,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun finish() {
         super.finish()
-        overridePendingTransition(R.anim.fadein, R.anim.fadeout)
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
     }
 }
