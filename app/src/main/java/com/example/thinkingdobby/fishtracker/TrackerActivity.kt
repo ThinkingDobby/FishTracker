@@ -50,7 +50,8 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
         tracker_tv_album.setOnClickListener(this)
         tracker_btn_shot.setOnClickListener(this)
         tracker_iv_menu.setOnClickListener {
-            val intent = Intent(this@TrackerActivity, MenuActivity::class.java)
+//            val intent = Intent(this@TrackerActivity, MenuActivity::class.java)
+            val intent = Intent(this@TrackerActivity, CollectionActivity::class.java)   // 임시 조치
             startActivity(intent)
         }
 
