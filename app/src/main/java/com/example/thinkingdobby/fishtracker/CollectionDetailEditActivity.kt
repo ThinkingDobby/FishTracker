@@ -40,7 +40,7 @@ class CollectionDetailEditActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_collection_detail_edit)
 
-        overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
+        overridePendingTransition(R.anim.none, R.anim.none)
 
         // request permission
         ActivityCompat.requestPermissions(this,
@@ -63,11 +63,9 @@ class CollectionDetailEditActivity : AppCompatActivity() {
             val year: Int = today.get(Calendar.YEAR)
             val month: Int = today.get(Calendar.MONTH)
             val date: Int = today.get(Calendar.DATE)
-            val dlg = DatePickerDialog(this, object : DatePickerDialog.OnDateSetListener {
-                override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
-                    val time = "${year}년 ${month + 1}월 ${dayOfMonth}일"
-                    collectionDetailEdit_tv_date.setText(time)
-                }
+            val dlg = DatePickerDialog(this, { view, year, month, dayOfMonth ->
+                val time = "${year}년 ${month + 1}월 ${dayOfMonth}일"
+                collectionDetailEdit_tv_date.setText(time)
             }, year, month, date)
             dlg.show()
         }
@@ -160,6 +158,7 @@ class CollectionDetailEditActivity : AppCompatActivity() {
             }
             Toast.makeText(this@CollectionDetailEditActivity, "업로드되었습니다.", Toast.LENGTH_SHORT).show()
             finish()
+            overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
         }
 
         // EditText 줄 수 제한
@@ -183,7 +182,7 @@ class CollectionDetailEditActivity : AppCompatActivity() {
 
     override fun finish() {
         super.finish()
-        overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
+        overridePendingTransition(R.anim.none, R.anim.none)
     }
 
     private fun loadImage() {
