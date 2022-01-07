@@ -260,7 +260,7 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
             "masou" -> "산천어"
             "catfish" -> "메기"
             "carassius" -> "붕어"
-            "mandarinfish" -> "잉어"
+            "mandarinfish" -> "쏘가리"
             "blue" -> "블루길"
             "chineseminnow" -> "버들치"
             "darkchub" -> "갈겨니"
