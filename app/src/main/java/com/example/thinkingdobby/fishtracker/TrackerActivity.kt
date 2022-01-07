@@ -2,13 +2,17 @@ package com.example.thinkingdobby.fishtracker
 
 import android.Manifest
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Intent
 import android.graphics.*
+import android.graphics.drawable.ColorDrawable
 import android.media.ExifInterface
 import android.os.Bundle
 import android.provider.MediaStore
 import android.support.v7.app.AppCompatActivity
-import android.view.View
+import android.util.TypedValue
+import android.view.*
+import android.widget.Toast
 import com.example.thinkingdobby.fishtracker.functions.createCopyAndReturnRealPath
 import com.example.thinkingdobby.fishtracker.functions.rotateImage
 import com.karumi.dexter.Dexter
@@ -18,6 +22,7 @@ import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import com.wonderkiln.camerakit.*
 import kotlinx.android.synthetic.main.activity_tracker.*
+import kotlinx.android.synthetic.main.detail_dialog.view.*
 import java.util.concurrent.Executor
 import java.util.concurrent.Executors
 
@@ -27,6 +32,8 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
     private val executor: Executor = Executors.newSingleThreadExecutor()
     private var cameraView: CameraView? = null
     private val PICK_IMAGE = 0
+
+    private lateinit var results: List<Classifier.Recognition>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,6 +62,38 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
             startActivity(intent)
             overridePendingTransition(R.anim.right_in, R.anim.left_out)
         }
+        tracker_tv_resultSubEnd.setOnClickListener {
+            val detailDialog = LayoutInflater.from(this).inflate(R.layout.detail_dialog, null)
+            val builder = AlertDialog.Builder(this, R.style.WrapContentDialog)
+                    .setView(detailDialog)
+
+            val dialog = builder.create()
+
+//            val params = dialog.getWindow().attributes;
+//            params.width = WindowManager.LayoutParams.WRAP_CONTENT
+//            params.height = WindowManager.LayoutParams.WRAP_CONTENT
+            dialog.window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+            dialog.window.setGravity(Gravity.CENTER);
+//            dialog.getWindow().attributes = params
+
+            dialog.getWindow().setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+            dialog.show()
+
+            detailDialog.detail_btn_bot.setOnClickListener {
+                dialog.dismiss()
+            }
+
+            detailDialog.detail_tv_fish1.text = nameEngToKor(namePicker(results[0].toString()))
+            detailDialog.detail_tv_fish1Sub.text = probPicker(results[0].toString()) + "%"
+
+            detailDialog.detail_tv_fish2.text = nameEngToKor(namePicker(results[1].toString()))
+            detailDialog.detail_tv_fish2Sub.text = probPicker(results[1].toString()) + "%"
+
+            detailDialog.detail_tv_fish3.text = nameEngToKor(namePicker(results[2].toString()))
+            detailDialog.detail_tv_fish3Sub.text = probPicker(results[2].toString()) + "%"
+        }
+
 
         // initialize tensorflow async
         initTensorFlowAndLoadModel()
@@ -91,9 +130,6 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
 
         cameraView!!.addCameraKitListener(cameraListener)
     }
-
-
-
 
     override fun onDestroy() {
         super.onDestroy()
@@ -148,7 +184,7 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
                     // 이미지 절대 경로 이용해 exif 데이터 추출
                     val ei = ExifInterface(createCopyAndReturnRealPath(applicationContext, uriPhoto!!))
                     val orientation = ei.getAttributeInt(ExifInterface.TAG_ORIENTATION,
-                    ExifInterface.ORIENTATION_UNDEFINED)
+                            ExifInterface.ORIENTATION_UNDEFINED)
 
                     val rotatedBitmap = when (orientation) {
                         ExifInterface.ORIENTATION_ROTATE_90 -> rotateImage(bitmap, 90f)
@@ -190,7 +226,7 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
         )
         bitmap = Bitmap.createScaledBitmap(bitmap, INPUT_SIZE * 3, INPUT_SIZE * 4, false)
 
-        val results = classifier!!.recognizeImage(bitmapForRecognize)
+        results = classifier!!.recognizeImage(bitmapForRecognize)
         val finalBitmap = bitmap
         runOnUiThread {
             tracker_iv_selected.setImageBitmap(finalBitmap)
@@ -255,3 +291,4 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
         private const val LABEL_FILE = "file:///android_asset/retrained_labels.txt"
     }
 }
+
