@@ -67,6 +67,8 @@ class CollectionDetailEditActivity : AppCompatActivity() {
                 val time = "${year}년 ${month + 1}월 ${dayOfMonth}일"
                 collectionDetailEdit_tv_date.setText(time)
             }, year, month, date)
+
+            dlg.datePicker.maxDate = today.timeInMillis // 현재 날짜 이전에서만 선택 가능하도록 설정
             dlg.show()
         }
 
@@ -80,7 +82,7 @@ class CollectionDetailEditActivity : AppCompatActivity() {
 
         collectionDetailEdit_btn_countDown.setOnClickListener {
             val now = collectionDetailEdit_tv_count.text.toString().toInt()
-            collectionDetailEdit_tv_count.setText("${now - 1}")
+            collectionDetailEdit_tv_count.setText("${Math.max(0, now - 1)}")
         }
 
         val bundle = intent.extras
