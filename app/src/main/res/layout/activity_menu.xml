@@ -51,15 +51,18 @@
         android:id="@+id/menu_cv_1"
         android:layout_width="0dp"
         android:layout_height="103dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         app:cardElevation="0dp"
         app:cardBackgroundColor="#00000000"
         app:layout_constraintTop_toTopOf="@id/menu_iv_card"
         app:layout_constraintStart_toStartOf="@id/menu_iv_card"
         app:layout_constraintEnd_toEndOf="@id/menu_iv_card">
         <android.support.constraint.ConstraintLayout
+            android:id="@+id/menu_cv_1_cl"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:background="?android:attr/selectableItemBackground">
             <ImageView
                 android:id="@+id/menu_iv_icon1"
                 android:layout_width="18dp"
@@ -118,6 +121,7 @@
         app:layout_constraintStart_toStartOf="@id/menu_iv_card"
         app:layout_constraintEnd_toEndOf="@id/menu_iv_card">
         <android.support.constraint.ConstraintLayout
+            android:id="@+id/menu_cv_2_cl"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <ImageView
@@ -128,7 +132,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:src="@drawable/menu_icon_group"
+                android:src="@drawable/menu_icon_group_disabled"
                 android:contentDescription="그룹" />
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -145,7 +149,7 @@
                     android:text="그룹 메뉴"
                     android:layout_marginBottom="4dp"
                     android:fontFamily="@font/noto_bold"
-                    android:textColor="@color/colorDark"
+                    android:textColor="@color/colorGray"
                     android:textSize="14sp"/>
                 <TextView
                     android:layout_width="220dp"
@@ -153,7 +157,7 @@
                     android:includeFontPadding="false"
                     android:text="그룹을 생성 및 참여해 수집한 물고기를 공유할 수 있습니다."
                     android:fontFamily="@font/noto_regular"
-                    android:textColor="@color/colorDark"
+                    android:textColor="@color/colorGray"
                     android:textSize="11sp"/>
             </LinearLayout>
         </android.support.constraint.ConstraintLayout>
@@ -178,6 +182,7 @@
         app:layout_constraintStart_toStartOf="@id/menu_iv_card"
         app:layout_constraintEnd_toEndOf="@id/menu_iv_card">
         <android.support.constraint.ConstraintLayout
+            android:id="@+id/menu_cv_3_cl"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <ImageView
@@ -188,7 +193,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:src="@drawable/menu_icon_fishbook"
+                android:src="@drawable/menu_icon_fishbook_disabled"
                 android:contentDescription="도감" />
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -205,7 +210,7 @@
                     android:text="물고기 도감"
                     android:layout_marginBottom="4dp"
                     android:fontFamily="@font/noto_bold"
-                    android:textColor="@color/colorDark"
+                    android:textColor="@color/colorGray"
                     android:textSize="14sp"/>
                 <TextView
                     android:layout_width="220dp"
@@ -213,7 +218,7 @@
                     android:includeFontPadding="false"
                     android:text="다양한 종류의 물고기에 대한 설명을 확인할 수 있습니다."
                     android:fontFamily="@font/noto_regular"
-                    android:textColor="@color/colorDark"
+                    android:textColor="@color/colorGray"
                     android:textSize="11sp"/>
             </LinearLayout>
         </android.support.constraint.ConstraintLayout>
@@ -238,8 +243,11 @@
         app:layout_constraintStart_toStartOf="@id/menu_iv_card"
         app:layout_constraintEnd_toEndOf="@id/menu_iv_card">
         <android.support.constraint.ConstraintLayout
+            android:id="@+id/menu_cv_4_cl"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:background="?android:attr/selectableItemBackground">
             <ImageView
                 android:id="@+id/menu_iv_icon4"
                 android:layout_width="35dp"

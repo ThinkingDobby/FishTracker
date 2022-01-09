@@ -51,6 +51,6 @@ class CollectionActivity : AppCompatActivity() {
 
     override fun finish() {
         super.finish()
-        overridePendingTransition(R.anim.left_in, R.anim.right_out)
+        overridePendingTransition(R.anim.none, R.anim.none)
     }
 }

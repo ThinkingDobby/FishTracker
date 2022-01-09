@@ -27,9 +27,10 @@ class MenuActivity : AppCompatActivity() {
 
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
 
-        menu_cv_1.setOnClickListener {
+        menu_cv_1_cl.setOnClickListener {
             val intent = Intent(this, CollectionActivity::class.java)
             startActivity(intent)
+            overridePendingTransition(R.anim.none, R.anim.none)
         }
 
         menu_btn_back.setOnClickListener {
@@ -251,5 +252,10 @@ class MenuActivity : AppCompatActivity() {
         bitmap.compress(Bitmap.CompressFormat.JPEG, 70, stream)
 
         return stream.toByteArray()
+    }
+
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(R.anim.left_in, R.anim.right_out)
     }
 }

@@ -57,8 +57,7 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
         tracker_tv_album.setOnClickListener(this)
         tracker_btn_shot.setOnClickListener(this)
         tracker_iv_menu.setOnClickListener {
-//            val intent = Intent(this@TrackerActivity, MenuActivity::class.java)
-            val intent = Intent(this@TrackerActivity, CollectionActivity::class.java)   // 임시 조치
+            val intent = Intent(this@TrackerActivity, MenuActivity::class.java)
             startActivity(intent)
             overridePendingTransition(R.anim.right_in, R.anim.left_out)
         }
@@ -69,12 +68,8 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
 
             val dialog = builder.create()
 
-//            val params = dialog.getWindow().attributes;
-//            params.width = WindowManager.LayoutParams.WRAP_CONTENT
-//            params.height = WindowManager.LayoutParams.WRAP_CONTENT
-            dialog.window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
-            dialog.window.setGravity(Gravity.CENTER);
-//            dialog.getWindow().attributes = params
+            dialog.window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT)
+            dialog.window.setGravity(Gravity.CENTER)
 
             dialog.getWindow().setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
