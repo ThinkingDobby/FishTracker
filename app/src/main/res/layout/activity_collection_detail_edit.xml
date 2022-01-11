@@ -87,7 +87,7 @@
             <EditText
                 android:id="@+id/collectionDetailEdit_tv_date"
                 android:layout_width="125dp"
-                android:layout_height="wrap_content"
+                android:layout_height="22dp"
                 android:layout_marginTop="8dp"
                 android:text="2021년 11월 7일"
                 android:inputType="text"
@@ -95,19 +95,11 @@
                 android:background="@android:color/transparent"
                 android:includeFontPadding="false"
                 android:fontFamily="@font/noto_regular"
-                android:textColor="@color/colorGray"
+                android:textColor="@color/colorDark"
                 android:textSize="14sp"
                 app:layout_constraintTop_toBottomOf="@id/collectionDetailEdit_iv_line1"
                 app:layout_constraintStart_toStartOf="@id/collectionDetailEdit_tv_dateTitle"/>
-            
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:adjustViewBounds="true"
-                app:layout_constraintStart_toStartOf="@id/collectionDetailEdit_tv_date"
-                app:layout_constraintEnd_toEndOf="@id/collectionDetailEdit_tv_date"
-                app:layout_constraintTop_toBottomOf="@id/collectionDetailEdit_tv_date"
-                android:src="@drawable/collection_detail_edit_line_long"/>
+
             
             <ImageView
                 android:id="@+id/collectionDetailEdit_btn_datePick"
@@ -157,25 +149,17 @@
             <EditText
                 android:id="@+id/collectionDetailEdit_tv_location"
                 android:layout_width="125dp"
-                android:layout_height="wrap_content"
+                android:layout_height="22dp"
                 android:layout_marginTop="8dp"
                 android:text="삼막곡 낚시터"
                 android:includeFontPadding="false"
                 android:inputType="text"
-                android:background="@android:color/transparent"
+                android:background="@drawable/line_long"
                 android:fontFamily="@font/noto_regular"
                 android:textColor="@color/colorDark"
                 android:textSize="14sp"
                 app:layout_constraintTop_toBottomOf="@id/collectionDetailEdit_iv_line2"
                 app:layout_constraintStart_toStartOf="@id/collectionDetailEdit_tv_locationTitle"/>
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                app:layout_constraintStart_toStartOf="@id/collectionDetailEdit_tv_location"
-                app:layout_constraintEnd_toEndOf="@id/collectionDetailEdit_tv_location"
-                app:layout_constraintTop_toBottomOf="@id/collectionDetailEdit_tv_location"
-                android:src="@drawable/collection_detail_edit_line_long"/>
 
             <TextView
                 android:id="@+id/collectionDetailEdit_tv_countTitle"
@@ -202,8 +186,8 @@
 
             <EditText
                 android:id="@+id/collectionDetailEdit_tv_count"
-                android:layout_width="58dp"
-                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_height="22dp"
                 android:layout_marginTop="8dp"
                 android:text="5"
                 android:includeFontPadding="false"
@@ -211,18 +195,10 @@
                 android:inputType="number"
                 android:background="@android:color/transparent"
                 android:fontFamily="@font/noto_regular"
-                android:textColor="@color/colorGray"
+                android:textColor="@color/colorDark"
                 android:textSize="14sp"
                 app:layout_constraintTop_toBottomOf="@id/collectionDetailEdit_iv_line3"
                 app:layout_constraintStart_toStartOf="@id/collectionDetailEdit_tv_countTitle"/>
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                app:layout_constraintStart_toStartOf="@id/collectionDetailEdit_tv_count"
-                app:layout_constraintEnd_toEndOf="@id/collectionDetailEdit_tv_count"
-                app:layout_constraintTop_toBottomOf="@id/collectionDetailEdit_tv_count"
-                android:src="@drawable/collection_detail_edit_line_short"/>
 
             <TextView
                 android:id="@+id/collectionDetailEdit_tv_countUnit"
@@ -235,14 +211,15 @@
                 android:textSize="12sp"
                 android:layout_marginStart="3dp"
                 app:layout_constraintStart_toEndOf="@id/collectionDetailEdit_tv_count"
-                app:layout_constraintBottom_toBottomOf="@id/collectionDetailEdit_tv_count"/>
+                app:layout_constraintBottom_toBottomOf="@id/collectionDetailEdit_tv_count"
+                app:layout_constraintTop_toTopOf="@id/collectionDetailEdit_tv_count"/>
             
             <ImageView
                 android:id="@+id/collectionDetailEdit_btn_countUp"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_marginStart="15dp"
-                app:layout_constraintStart_toEndOf="@id/collectionDetailEdit_tv_countUnit"
+                app:layout_constraintStart_toEndOf="@id/collectionDetailEdit_tv_countTitle"
                 app:layout_constraintBottom_toBottomOf="@id/collectionDetailEdit_tv_countUnit"
                 android:src="@drawable/btn_up"/>
 
@@ -281,25 +258,17 @@
             <EditText
                 android:id="@+id/collectionDetailEdit_tv_size"
                 android:layout_width="58dp"
-                android:layout_height="wrap_content"
+                android:layout_height="22dp"
                 android:layout_marginTop="8dp"
                 android:text="40"
                 android:includeFontPadding="false"
                 android:inputType="number"
-                android:background="@android:color/transparent"
+                android:background="@drawable/line_short"
                 android:fontFamily="@font/noto_regular"
                 android:textColor="@color/colorDark"
                 android:textSize="14sp"
                 app:layout_constraintTop_toBottomOf="@id/collectionDetailEdit_iv_line4"
                 app:layout_constraintStart_toStartOf="@id/collectionDetailEdit_tv_sizeTitle"/>
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                app:layout_constraintStart_toStartOf="@id/collectionDetailEdit_tv_size"
-                app:layout_constraintEnd_toEndOf="@id/collectionDetailEdit_tv_size"
-                app:layout_constraintTop_toBottomOf="@id/collectionDetailEdit_tv_size"
-                android:src="@drawable/collection_detail_edit_line_short"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -338,15 +307,15 @@
 
             <EditText
                 android:id="@+id/collectionDetailEdit_tv_info"
-                android:layout_width="262dp"
-                android:layout_height="46dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="7dp"
+                android:layout_width="276dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="12dp"
+                android:padding="7dp"
                 android:maxLines="2"
                 android:text="가장 좋아하는 물고기"
                 android:inputType="textMultiLine"
                 android:scrollbars="vertical"
-                android:background="@android:color/transparent"
+                android:background="@drawable/rect"
                 android:gravity="top"
                 android:includeFontPadding="false"
                 android:fontFamily="@font/noto_regular"
@@ -354,15 +323,6 @@
                 android:textSize="14sp"
                 app:layout_constraintTop_toBottomOf="@id/collectionDetailEdit_iv_line5"
                 app:layout_constraintStart_toStartOf="@id/collectionDetailEdit_tv_infoTitle"/>
-
-            <ImageView
-                android:layout_width="276dp"
-                android:layout_height="60dp"
-                app:layout_constraintStart_toStartOf="@id/collectionDetailEdit_tv_info"
-                app:layout_constraintEnd_toEndOf="@id/collectionDetailEdit_tv_info"
-                app:layout_constraintTop_toTopOf="@id/collectionDetailEdit_tv_info"
-                app:layout_constraintBottom_toBottomOf="@id/collectionDetailEdit_tv_info"
-                android:src="@drawable/menu_rect"/>
 
             <android.support.constraint.Guideline
                 android:id="@+id/collection_cv_gl"
