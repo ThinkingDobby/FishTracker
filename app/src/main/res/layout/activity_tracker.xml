@@ -56,6 +56,14 @@
         android:src="@drawable/tracker_menu"
         android:contentDescription="메뉴" />
 
+    <View
+        android:id="@+id/tracker_v_menu"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toStartOf="@id/tracker_iv_menu"
+        app:layout_constraintEnd_toEndOf="@id/tracker_iv_menu"
+        app:layout_constraintBottom_toBottomOf="@id/tracker_iv_menu"
+        app:layout_constraintTop_toTopOf="@id/tracker_iv_menu"/>
 
     <ImageView
         android:id="@+id/tracker_iv_trackerBottom"

@@ -250,28 +250,21 @@
                 android:orientation="vertical"
                 app:layout_constraintGuide_percent="0.5" />
 
-            <ImageView
+            <Button
                 android:id="@+id/collectionDetail_btn_change"
                 android:layout_width="325dp"
                 android:layout_height="39dp"
                 android:layout_marginTop="48dp"
+                android:text="정보 변경"
+                android:textSize="14sp"
+                android:adjustViewBounds="true"
+                android:fontFamily="@font/noto_medium"
+                android:textColor="@drawable/to_change_text"
+                android:includeFontPadding="false"
                 app:layout_constraintTop_toBottomOf="@id/collectionDetail_tv_info"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:src="@drawable/collection_detail_change"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="정보 변경"
-                android:textSize="14sp"
-                android:fontFamily="@font/noto_medium"
-                android:textColor="@color/colorDark"
-                android:includeFontPadding="false"
-                app:layout_constraintStart_toStartOf="@id/collectionDetail_btn_change"
-                app:layout_constraintEnd_toEndOf="@id/collectionDetail_btn_change"
-                app:layout_constraintTop_toTopOf="@id/collectionDetail_btn_change"
-                app:layout_constraintBottom_toBottomOf="@id/collectionDetail_btn_change"/>
+                android:background="@drawable/to_change_btn"/>
 
         </android.support.constraint.ConstraintLayout>
     </ScrollView>

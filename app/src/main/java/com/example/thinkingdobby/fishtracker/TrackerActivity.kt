@@ -56,7 +56,7 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
         tracker_btn_album.setOnClickListener(this)
         tracker_tv_album.setOnClickListener(this)
         tracker_btn_shot.setOnClickListener(this)
-        tracker_iv_menu.setOnClickListener {
+        tracker_v_menu.setOnClickListener {
             val intent = Intent(this@TrackerActivity, MenuActivity::class.java)
             startActivity(intent)
             overridePendingTransition(R.anim.right_in, R.anim.left_out)
