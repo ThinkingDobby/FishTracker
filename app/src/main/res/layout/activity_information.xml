@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".InformationActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:paddingTop="74dp"
+        android:paddingBottom="21dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/information_btn_back"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/information_tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:text="민물고기 도감"
+                android:textSize="20sp"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/noto_bold"
+                android:includeFontPadding="false"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginBottom="3dp"
+                android:text="은"
+                android:textSize="14sp"
+                android:textColor="@color/colorDark"
+                android:fontFamily="@font/noto_regular"
+                android:includeFontPadding="false"
+                app:layout_constraintStart_toEndOf="@id/information_tv_title"
+                app:layout_constraintBottom_toBottomOf="@id/information_tv_title"/>
+
+            <TextView
+                android:id="@+id/information_tv_info"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                android:text="@string/information_info"
+                android:textSize="14sp"
+                android:textColor="@color/colorDark"
+                android:fontFamily="@font/noto_regular"
+                android:includeFontPadding="false"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/information_tv_title"/>
+
+            <TextView
+                android:id="@+id/information_tv_funcTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="90dp"
+                android:fontFamily="@font/noto_bold"
+                android:includeFontPadding="false"
+                android:text="기능 설명"
+                android:textColor="@color/colorPrimary"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/information_tv_info" />
+
+            <TextView
+                android:id="@+id/information_tv_func1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:layout_marginStart="32dp"
+                android:text="탐색 페이지"
+                android:textSize="13sp"
+                android:textColor="@color/colorDark"
+                android:fontFamily="@font/noto_bold"
+                android:includeFontPadding="false"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/information_tv_funcTitle"/>
+
+            <ImageView
+                android:id="@+id/information_iv_shot"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="24dp"
+                app:layout_constraintTop_toBottomOf="@id/information_tv_func1"
+                app:layout_constraintStart_toStartOf="parent"
+                android:src="@drawable/tracker_shot"/>
+
+            <TextView
+                android:id="@+id/information_tv_shot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:text="물고기의 사진을 촬영합니다."
+                android:textSize="14sp"
+                android:textColor="@color/colorDark"
+                android:fontFamily="@font/noto_regular"
+                android:includeFontPadding="false"
+                app:layout_constraintStart_toEndOf="@id/information_iv_shot"
+                app:layout_constraintTop_toTopOf="@id/information_iv_shot"
+                app:layout_constraintBottom_toBottomOf="@id/information_iv_shot"/>
+
+            <ImageView
+                android:id="@+id/information_iv_album"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginTop="26dp"
+                app:layout_constraintTop_toBottomOf="@id/information_iv_shot"
+                app:layout_constraintStart_toStartOf="@id/information_iv_shot"
+                app:layout_constraintEnd_toEndOf="@id/information_iv_shot"
+                android:src="@drawable/tracker_album"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="앨범에서 사진을 선택합니다."
+                android:textSize="14sp"
+                android:textColor="@color/colorDark"
+                android:fontFamily="@font/noto_regular"
+                android:includeFontPadding="false"
+                app:layout_constraintStart_toStartOf="@id/information_tv_shot"
+                app:layout_constraintTop_toTopOf="@id/information_iv_album"
+                app:layout_constraintBottom_toBottomOf="@id/information_iv_album"/>
+
+            <TextView
+                android:id="@+id/information_tv_func1Info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="34dp"
+                android:text="사진에 대한 탐지 결과가 나타납니다."
+                android:textSize="14sp"
+                android:textColor="@color/colorDark"
+                android:fontFamily="@font/noto_regular"
+                android:includeFontPadding="false"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/information_iv_album"/>
+
+            <TextView
+                android:id="@+id/information_tv_func2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:layout_marginStart="32dp"
+                android:text="개인 메뉴"
+                android:textSize="13sp"
+                android:textColor="@color/colorDark"
+                android:fontFamily="@font/noto_bold"
+                android:includeFontPadding="false"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/information_tv_func1Info"/>
+
+            <TextView
+                android:id="@+id/information_tv_func2Info"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="24dp"
+                android:text="수집한 물고기의 사진과 간단한 정보들을 기록할 수 있습니다."
+                android:textSize="14sp"
+                android:textColor="@color/colorDark"
+                android:fontFamily="@font/noto_regular"
+                android:includeFontPadding="false"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/information_tv_func2"/>
+
+            <ImageView
+                android:id="@+id/information_iv_warn"
+                android:layout_width="13dp"
+                android:layout_height="12dp"
+                android:layout_marginTop="90dp"
+                android:layout_marginStart="32dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/information_tv_func2Info"
+                android:src="@drawable/icon_warn"/>
+            
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="주의사항"
+                android:textSize="12sp"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/noto_medium"
+                android:includeFontPadding="false"
+                app:layout_constraintStart_toEndOf="@id/information_iv_warn"
+                app:layout_constraintTop_toTopOf="@id/information_iv_warn"
+                app:layout_constraintBottom_toBottomOf="@id/information_iv_warn"/>
+
+            <TextView
+                android:id="@+id/information_tv_warn1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:text="본 애플리케이션은 엔터테인먼트를 위한 목적으로 제작되었으며, 부정확한 결과가 도출될 수 있습니다."
+                android:textSize="11sp"
+                android:textColor="@color/colorGray"
+                android:fontFamily="@font/noto_regular"
+                android:includeFontPadding="false"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/information_iv_warn"/>
+
+            <TextView
+                android:id="@+id/information_tv_warn2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:text="오류 및 문의사항 제보는 개발자 이메일을 이용해 주시기 바랍니다."
+                android:textSize="11sp"
+                android:textColor="@color/colorGray"
+                android:fontFamily="@font/noto_regular"
+                android:includeFontPadding="false"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/information_tv_warn1"/>
+            
+            <ImageView
+                android:id="@+id/information_iv_icon"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="24dp"
+                android:src="@drawable/icon"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/information_tv_warn2"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="32dp"
+                app:layout_constraintTop_toTopOf="@id/information_iv_icon"
+                app:layout_constraintBottom_toBottomOf="@id/information_iv_icon"
+                app:layout_constraintStart_toEndOf="@id/information_iv_icon"
+                app:layout_constraintEnd_toEndOf="parent">
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/information_tv_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="민물고기 도감"
+                        android:textSize="14sp"
+                        android:textColor="@color/colorDark"
+                        android:fontFamily="@font/noto_bold"
+                        android:includeFontPadding="false"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginTop="5dp"
+                        android:text="사진 촬영을 통해 물고기 종류를 알 수 있는 애플리케이션입니다."
+                        android:textSize="11sp"
+                        android:textColor="@color/colorGray"
+                        android:fontFamily="@font/noto_regular"
+                        android:includeFontPadding="false"
+                        app:layout_constraintTop_toBottomOf="@id/information_tv_icon"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="9dp"
+                        android:text="v 0.1"
+                        android:textSize="11sp"
+                        android:textColor="@color/colorGray"
+                        android:fontFamily="@font/noto_regular"
+                        android:includeFontPadding="false"
+                        app:layout_constraintBottom_toBottomOf="@id/information_tv_icon"
+                        app:layout_constraintStart_toEndOf="@id/information_tv_icon"/>
+                </android.support.constraint.ConstraintLayout>
+
+            </LinearLayout>
+
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+
+
+    <!--상단 바-->
+    <ImageView
+        android:id="@+id/information_iv_top"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/top"
+        android:contentDescription="상단 타이틀" />
+
+    <ImageView
+        android:id="@+id/information_btn_back"
+        android:layout_width="12dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginBottom="26dp"
+        app:layout_constraintBottom_toBottomOf="@id/information_iv_top"
+        app:layout_constraintStart_toStartOf="@id/information_iv_top"
+        android:src="@drawable/arrow_right"/>
+
+    <View
+        android:id="@+id/information_v_backArea"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toStartOf="@id/information_btn_back"
+        app:layout_constraintEnd_toEndOf="@id/information_btn_back"
+        app:layout_constraintTop_toTopOf="@id/information_btn_back"
+        app:layout_constraintBottom_toBottomOf="@id/information_btn_back"/>
+
+    <TextView
+        android:id="@+id/information_tv_titleMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="상세 정보"
+        android:textSize="18sp"
+        android:fontFamily="@font/noto_medium"
+        android:textColor="@color/colorWhite"
+        android:includeFontPadding="false"
+        app:layout_constraintTop_toTopOf="@id/information_btn_back"
+        app:layout_constraintBottom_toBottomOf="@id/information_btn_back"
+        app:layout_constraintStart_toStartOf="@id/information_iv_top"
+        app:layout_constraintEnd_toEndOf="@id/information_iv_top"/>
+    <!--상단 바-->
+
+</android.support.constraint.ConstraintLayout>

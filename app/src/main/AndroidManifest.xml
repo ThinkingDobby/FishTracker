@@ -15,8 +15,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CollectionDetailEditActivity"
-            android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".InformationActivity"></activity>
+        <activity
+            android:name=".CollectionDetailEditActivity"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".CollectionDetailActivity" />
         <activity android:name=".CollectionActivity" />
         <activity android:name=".MenuActivity" />

@@ -33,6 +33,12 @@ class MenuActivity : AppCompatActivity() {
             overridePendingTransition(R.anim.none, R.anim.none)
         }
 
+        menu_cv_4_cl.setOnClickListener {
+            val intent = Intent(this, InformationActivity::class.java)
+            startActivity(intent)
+            overridePendingTransition(R.anim.none, R.anim.none)
+        }
+
         menu_btn_back.setOnClickListener {
             finish()
         }
