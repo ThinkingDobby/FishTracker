@@ -49,7 +49,6 @@ class MenuActivity : AppCompatActivity() {
             val editor = pref.edit()
             editor.putBoolean("isFirst", true)
             editor.apply()
-            Toast.makeText(this@MenuActivity, "Test", Toast.LENGTH_SHORT).show()
             // 기본 데이터 추가
             thread {    // 비동기 처리 필요
                 // 테스트

@@ -41,6 +41,10 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_tracker)
 
         cameraView = findViewById<View>(R.id.cameraView) as CameraView
+
+        // cameraview library has its own permission check method
+        cameraView!!.setPermissions(CameraKit.Constants.PERMISSIONS_PICTURE)
+
         cameraView!!.start()
 
         initVisibility()
@@ -95,21 +99,6 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
         initTensorFlowAndLoadModel()
 
         // permission check & request if needed
-        Dexter.withActivity(this)
-                .withPermissions(
-                        Manifest.permission.READ_EXTERNAL_STORAGE,
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                        Manifest.permission.CAMERA
-                ).withListener(object : MultiplePermissionsListener {
-                    override fun onPermissionsChecked(report: MultiplePermissionsReport) { /* ... */
-                    }
-
-                    override fun onPermissionRationaleShouldBeShown(permissions: List<PermissionRequest>, token: PermissionToken) { /* ... */
-                    }
-                }).check()
-
-        // cameraview library has its own permission check method
-        cameraView!!.setPermissions(CameraKit.Constants.PERMISSIONS_PICTURE)
 
         val cameraListener: CameraKitEventListener = object : CameraKitEventListener {
             override fun onEvent(cameraKitEvent: CameraKitEvent) {
