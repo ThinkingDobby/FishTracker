@@ -126,12 +126,9 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
 
         cameraView!!.addCameraKitListener(cameraListener)
 
-        val anim1 = AnimationUtils.loadAnimation(this, R.anim.arrow1)
-        tracker_iv_arrow1.startAnimation(anim1)
-        val anim2 = AnimationUtils.loadAnimation(this, R.anim.arrow2)
-        tracker_iv_arrow2.startAnimation(anim2)
-        tracker_iv_arrow1.visibility = View.INVISIBLE
-        tracker_iv_arrow2.visibility = View.INVISIBLE
+        val anim = AnimationUtils.loadAnimation(this, R.anim.spread_text)
+        tracker_tv_spread.startAnimation(anim)
+        tracker_iv_spread.startAnimation(anim)
     }
 
     override fun onDestroy() {

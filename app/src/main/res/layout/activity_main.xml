@@ -9,6 +9,7 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/main_tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="민물고기 도감"
@@ -20,5 +21,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
+
+    <ImageView
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        app:layout_constraintVertical_bias="0.3"
+        android:src="@drawable/menu_icon_fishbook"
+        app:layout_constraintTop_toBottomOf="@id/main_tv_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </android.support.constraint.ConstraintLayout>
