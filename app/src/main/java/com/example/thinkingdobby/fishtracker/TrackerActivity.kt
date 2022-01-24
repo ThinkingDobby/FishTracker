@@ -12,6 +12,7 @@ import android.provider.MediaStore
 import android.support.v7.app.AppCompatActivity
 import android.util.TypedValue
 import android.view.*
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import com.example.thinkingdobby.fishtracker.functions.createCopyAndReturnRealPath
 import com.example.thinkingdobby.fishtracker.functions.rotateImage
@@ -124,6 +125,13 @@ class TrackerActivity : AppCompatActivity(), View.OnClickListener {
         }
 
         cameraView!!.addCameraKitListener(cameraListener)
+
+        val anim1 = AnimationUtils.loadAnimation(this, R.anim.arrow1)
+        tracker_iv_arrow1.startAnimation(anim1)
+        val anim2 = AnimationUtils.loadAnimation(this, R.anim.arrow2)
+        tracker_iv_arrow2.startAnimation(anim2)
+        tracker_iv_arrow1.visibility = View.INVISIBLE
+        tracker_iv_arrow2.visibility = View.INVISIBLE
     }
 
     override fun onDestroy() {
