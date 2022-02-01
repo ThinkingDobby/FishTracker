@@ -26,7 +26,7 @@
         android:layout_width="125dp"
         android:layout_height="125dp"
         app:layout_constraintVertical_bias="0.3"
-        android:src="@drawable/menu_icon_fishbook"
+        android:src="@drawable/icon_fishbook"
         app:layout_constraintTop_toBottomOf="@id/main_tv_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
