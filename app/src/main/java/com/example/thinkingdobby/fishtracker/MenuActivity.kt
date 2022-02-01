@@ -73,11 +73,17 @@ class MenuActivity : AppCompatActivity() {
                 bass.image = getByteArrayFromDrawable(uriBass)
                 fishDB?.fishDao()?.insert(bass)
 
+                // blue
+                val uriBlue = Uri.parse("android.resource://com.example.thinkingdobby.fishtracker/drawable/collection_icon_blue")
+                val eiBlue = ExifInterface(createCopyAndReturnRealPath(applicationContext, uriBlue))
+                val orientationBlue = eiBlue.getAttributeInt(ExifInterface.TAG_ORIENTATION,
+                        ExifInterface.ORIENTATION_UNDEFINED)
+
                 val blue = Fish()
                 blue.fishName = "블루길"
                 blue.id = 2
-                blue.imgOt = orientation
-                blue.image = getByteArrayFromDrawable(uri)
+                blue.imgOt = orientationBlue
+                blue.image = getByteArrayFromDrawable(uriBlue)
                 fishDB?.fishDao()?.insert(blue)
 
                 // carassius
@@ -93,7 +99,7 @@ class MenuActivity : AppCompatActivity() {
                 carassius.image = getByteArrayFromDrawable(uriCara)
                 fishDB?.fishDao()?.insert(carassius)
 
-                //carp
+                // carp
                 val uriCarp = Uri.parse("android.resource://com.example.thinkingdobby.fishtracker/drawable/collection_icon_carp")
                 val eiCarp = ExifInterface(createCopyAndReturnRealPath(applicationContext, uriCarp))
                 val orientationCarp = eiCarp.getAttributeInt(ExifInterface.TAG_ORIENTATION,
@@ -106,7 +112,7 @@ class MenuActivity : AppCompatActivity() {
                 carp.image = getByteArrayFromDrawable(uriCarp)
                 fishDB?.fishDao()?.insert(carp)
 
-                //catfish
+                // catfish
                 val uriCat = Uri.parse("android.resource://com.example.thinkingdobby.fishtracker/drawable/collection_icon_catfish")
                 val eiCat = ExifInterface(createCopyAndReturnRealPath(applicationContext, uriCat))
                 val orientationCat = eiCat.getAttributeInt(ExifInterface.TAG_ORIENTATION,
@@ -119,7 +125,7 @@ class MenuActivity : AppCompatActivity() {
                 catfish.image = getByteArrayFromDrawable(uriCat)
                 fishDB?.fishDao()?.insert(catfish)
 
-                //channaargus
+                // channaargus
                 val uriChanna = Uri.parse("android.resource://com.example.thinkingdobby.fishtracker/drawable/collection_icon_channaargus")
                 val eiChanna = ExifInterface(createCopyAndReturnRealPath(applicationContext, uriChanna))
                 val orientationChanna = eiChanna.getAttributeInt(ExifInterface.TAG_ORIENTATION,
@@ -132,21 +138,33 @@ class MenuActivity : AppCompatActivity() {
                 channaArgus.image = getByteArrayFromDrawable(uriChanna)
                 fishDB?.fishDao()?.insert(channaArgus)
 
+                // chineseminnow
+                val uriChineseminnow = Uri.parse("android.resource://com.example.thinkingdobby.fishtracker/drawable/collection_icon_chineseminnow")
+                val eiChineseminnow = ExifInterface(createCopyAndReturnRealPath(applicationContext, uriChineseminnow))
+                val orientationChineseminnow = eiChineseminnow.getAttributeInt(ExifInterface.TAG_ORIENTATION,
+                        ExifInterface.ORIENTATION_UNDEFINED)
+
                 val chineseMinnow = Fish()
                 chineseMinnow.fishName = "버들치"
                 chineseMinnow.id = 7
-                chineseMinnow.imgOt = orientation
-                chineseMinnow.image = getByteArrayFromDrawable(uri)
+                chineseMinnow.imgOt = orientationChineseminnow
+                chineseMinnow.image = getByteArrayFromDrawable(uriChineseminnow)
                 fishDB?.fishDao()?.insert(chineseMinnow)
+
+                // chub
+                val uriChub = Uri.parse("android.resource://com.example.thinkingdobby.fishtracker/drawable/collection_icon_chub")
+                val eiChub = ExifInterface(createCopyAndReturnRealPath(applicationContext, uriChub))
+                val orientationChub = eiChub.getAttributeInt(ExifInterface.TAG_ORIENTATION,
+                        ExifInterface.ORIENTATION_UNDEFINED)
 
                 val chub = Fish()
                 chub.fishName = "끄리"
                 chub.id = 8
-                chub.imgOt = orientation
-                chub.image = getByteArrayFromDrawable(uri)
+                chub.imgOt = orientationChub
+                chub.image = getByteArrayFromDrawable(uriChub)
                 fishDB?.fishDao()?.insert(chub)
 
-                //coreoperca
+                // coreoperca
                 val uriCoreo = Uri.parse("android.resource://com.example.thinkingdobby.fishtracker/drawable/collection_icon_coreoperca")
                 val eiCoreo = ExifInterface(createCopyAndReturnRealPath(applicationContext, uriCoreo))
                 val orientationCoreo = eiCoreo.getAttributeInt(ExifInterface.TAG_ORIENTATION,
@@ -159,88 +177,160 @@ class MenuActivity : AppCompatActivity() {
                 coreoperca.image = getByteArrayFromDrawable(uriCoreo)
                 fishDB?.fishDao()?.insert(coreoperca)
 
+                // chub
+                val uriDarkchub = Uri.parse("android.resource://com.example.thinkingdobby.fishtracker/drawable/collection_icon_darkchub")
+                val eiDarkchub = ExifInterface(createCopyAndReturnRealPath(applicationContext, uriDarkchub))
+                val orientationDarkchub = eiDarkchub.getAttributeInt(ExifInterface.TAG_ORIENTATION,
+                        ExifInterface.ORIENTATION_UNDEFINED)
+
                 val darkChub = Fish()
                 darkChub.fishName = "갈겨니"
                 darkChub.id = 10
-                darkChub.imgOt = orientation
-                darkChub.image = getByteArrayFromDrawable(uri)
+                darkChub.imgOt = orientationDarkchub
+                darkChub.image = getByteArrayFromDrawable(uriDarkchub)
                 fishDB?.fishDao()?.insert(darkChub)
+
+                // eel
+                val uriEel = Uri.parse("android.resource://com.example.thinkingdobby.fishtracker/drawable/collection_icon_eel")
+                val eiEel = ExifInterface(createCopyAndReturnRealPath(applicationContext, uriEel))
+                val orientationEel = eiEel.getAttributeInt(ExifInterface.TAG_ORIENTATION,
+                        ExifInterface.ORIENTATION_UNDEFINED)
 
                 val eel = Fish()
                 eel.fishName = "장어"
                 eel.id = 11
-                eel.imgOt = orientation
-                eel.image = getByteArrayFromDrawable(uri)
+                eel.imgOt = orientationEel
+                eel.image = getByteArrayFromDrawable(uriEel)
                 fishDB?.fishDao()?.insert(eel)
+
+                // goby
+                val uriGoby = Uri.parse("android.resource://com.example.thinkingdobby.fishtracker/drawable/collection_icon_goby")
+                val eiGoby = ExifInterface(createCopyAndReturnRealPath(applicationContext, uriGoby))
+                val orientationGoby = eiGoby.getAttributeInt(ExifInterface.TAG_ORIENTATION,
+                        ExifInterface.ORIENTATION_UNDEFINED)
 
                 val goby = Fish()
                 goby.fishName = "모래무지"
                 goby.id = 12
-                goby.imgOt = orientation
-                goby.image = getByteArrayFromDrawable(uri)
+                goby.imgOt = orientationGoby
+                goby.image = getByteArrayFromDrawable(uriGoby)
                 fishDB?.fishDao()?.insert(goby)
+
+                // leather
+                val uriLeather = Uri.parse("android.resource://com.example.thinkingdobby.fishtracker/drawable/collection_icon_leather")
+                val eiLeather = ExifInterface(createCopyAndReturnRealPath(applicationContext, uriLeather))
+                val orientationLeather = eiLeather.getAttributeInt(ExifInterface.TAG_ORIENTATION,
+                        ExifInterface.ORIENTATION_UNDEFINED)
 
                 val leather = Fish()
                 leather.fishName = "향어"
                 leather.id = 13
-                leather.imgOt = orientation
-                leather.image = getByteArrayFromDrawable(uri)
+                leather.imgOt = orientationLeather
+                leather.image = getByteArrayFromDrawable(uriLeather)
                 fishDB?.fishDao()?.insert(leather)
+
+                // mandarinfish
+                val uriMandarinfish = Uri.parse("android.resource://com.example.thinkingdobby.fishtracker/drawable/collection_icon_mandarinfish")
+                val eiMandarinfish = ExifInterface(createCopyAndReturnRealPath(applicationContext, uriMandarinfish))
+                val orientationMandarinfish = eiMandarinfish.getAttributeInt(ExifInterface.TAG_ORIENTATION,
+                        ExifInterface.ORIENTATION_UNDEFINED)
 
                 val mandarinFish = Fish()
                 mandarinFish.fishName = "쏘가리"
                 mandarinFish.id = 14
-                mandarinFish.imgOt = orientation
-                mandarinFish.image = getByteArrayFromDrawable(uri)
+                mandarinFish.imgOt = orientationMandarinfish
+                mandarinFish.image = getByteArrayFromDrawable(uriMandarinfish)
                 fishDB?.fishDao()?.insert(mandarinFish)
+
+                // masou
+                val uriMasou = Uri.parse("android.resource://com.example.thinkingdobby.fishtracker/drawable/collection_icon_masou")
+                val eiMasou = ExifInterface(createCopyAndReturnRealPath(applicationContext, uriMasou))
+                val orientationMasou = eiMasou.getAttributeInt(ExifInterface.TAG_ORIENTATION,
+                        ExifInterface.ORIENTATION_UNDEFINED)
 
                 val masou = Fish()
                 masou.fishName = "산천어"
                 masou.id = 15
-                masou.imgOt = orientation
-                masou.image = getByteArrayFromDrawable(uri)
+                masou.imgOt = orientationMasou
+                masou.image = getByteArrayFromDrawable(uriMasou)
                 fishDB?.fishDao()?.insert(masou)
+
+                // minnow
+                val uriMinnow = Uri.parse("android.resource://com.example.thinkingdobby.fishtracker/drawable/collection_icon_minnow")
+                val eiMinnow = ExifInterface(createCopyAndReturnRealPath(applicationContext, uriMinnow))
+                val orientationMinnow = eiMinnow.getAttributeInt(ExifInterface.TAG_ORIENTATION,
+                        ExifInterface.ORIENTATION_UNDEFINED)
 
                 val minnow = Fish()
                 minnow.fishName = "피라미"
                 minnow.id = 16
-                minnow.imgOt = orientation
-                minnow.image = getByteArrayFromDrawable(uri)
+                minnow.imgOt = orientationMinnow
+                minnow.image = getByteArrayFromDrawable(uriMinnow)
                 fishDB?.fishDao()?.insert(minnow)
+
+                // rainbow
+                val uriRainbow = Uri.parse("android.resource://com.example.thinkingdobby.fishtracker/drawable/collection_icon_rainbow")
+                val eiRainbow = ExifInterface(createCopyAndReturnRealPath(applicationContext, uriRainbow))
+                val orientationRainbow = eiRainbow.getAttributeInt(ExifInterface.TAG_ORIENTATION,
+                        ExifInterface.ORIENTATION_UNDEFINED)
 
                 val rainbow = Fish()
                 rainbow.fishName = "무지개 송어"
                 rainbow.id = 17
-                rainbow.imgOt = orientation
-                rainbow.image = getByteArrayFromDrawable(uri)
+                rainbow.imgOt = orientationRainbow
+                rainbow.image = getByteArrayFromDrawable(uriRainbow)
                 fishDB?.fishDao()?.insert(rainbow)
+
+                // skin
+                val uriSkin = Uri.parse("android.resource://com.example.thinkingdobby.fishtracker/drawable/collection_icon_skin")
+                val eiSkin = ExifInterface(createCopyAndReturnRealPath(applicationContext, uriSkin))
+                val orientationSkin = eiSkin.getAttributeInt(ExifInterface.TAG_ORIENTATION,
+                        ExifInterface.ORIENTATION_UNDEFINED)
 
                 val skin = Fish()
                 skin.fishName = "누치"
                 skin.id = 18
-                skin.imgOt = orientation
-                skin.image = getByteArrayFromDrawable(uri)
+                skin.imgOt = orientationSkin
+                skin.image = getByteArrayFromDrawable(uriSkin)
                 fishDB?.fishDao()?.insert(skin)
+
+                // skygager
+                val uriSkygager = Uri.parse("android.resource://com.example.thinkingdobby.fishtracker/drawable/collection_icon_skygager")
+                val eiSkygager = ExifInterface(createCopyAndReturnRealPath(applicationContext, uriSkygager))
+                val orientationSkygager = eiSkygager.getAttributeInt(ExifInterface.TAG_ORIENTATION,
+                        ExifInterface.ORIENTATION_UNDEFINED)
 
                 val skygager = Fish()
                 skygager.fishName = "강준치"
                 skygager.id = 19
-                skygager.imgOt = orientation
-                skygager.image = getByteArrayFromDrawable(uri)
+                skygager.imgOt = orientationSkygager
+                skygager.image = getByteArrayFromDrawable(uriSkygager)
                 fishDB?.fishDao()?.insert(skygager)
+
+                // striped
+                val uriStriped = Uri.parse("android.resource://com.example.thinkingdobby.fishtracker/drawable/collection_icon_striped")
+                val eiStriped = ExifInterface(createCopyAndReturnRealPath(applicationContext, uriStriped))
+                val orientationStriped = eiStriped.getAttributeInt(ExifInterface.TAG_ORIENTATION,
+                        ExifInterface.ORIENTATION_UNDEFINED)
 
                 val striped = Fish()
                 striped.fishName = "돌고기"
                 striped.id = 20
-                striped.imgOt = orientation
-                striped.image = getByteArrayFromDrawable(uri)
+                striped.imgOt = orientationStriped
+                striped.image = getByteArrayFromDrawable(uriStriped)
                 fishDB?.fishDao()?.insert(striped)
+
+                // sweet
+                val uriSweet = Uri.parse("android.resource://com.example.thinkingdobby.fishtracker/drawable/collection_icon_sweet")
+                val eiSweet = ExifInterface(createCopyAndReturnRealPath(applicationContext, uriSweet))
+                val orientationSweet = eiSweet.getAttributeInt(ExifInterface.TAG_ORIENTATION,
+                        ExifInterface.ORIENTATION_UNDEFINED)
 
                 val sweet = Fish()
                 sweet.fishName = "은어"
                 sweet.id = 21
-                sweet.imgOt = orientation
-                sweet.image = getByteArrayFromDrawable(uri)
+                sweet.imgOt = orientationSweet
+                sweet.image = getByteArrayFromDrawable(uriSweet)
                 fishDB?.fishDao()?.insert(sweet)
             }
         } else {
