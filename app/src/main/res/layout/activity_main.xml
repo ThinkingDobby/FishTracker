@@ -23,10 +23,10 @@
         app:layout_constraintBottom_toBottomOf="parent" />
 
     <ImageView
-        android:layout_width="125dp"
-        android:layout_height="125dp"
-        app:layout_constraintVertical_bias="0.3"
-        android:src="@drawable/icon_fishbook"
+        android:layout_width="165dp"
+        android:layout_height="165dp"
+        app:layout_constraintVertical_bias="0.35"
+        android:src="@drawable/main_icon_fish"
         app:layout_constraintTop_toBottomOf="@id/main_tv_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
